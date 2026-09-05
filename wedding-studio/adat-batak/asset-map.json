@@ -1,0 +1,1030 @@
+{
+  "totalAssetsScanned": 36,
+  "unreferencedAssetsCount": 13,
+  "missingExternalAssetsCount": 15,
+  "assets": [
+    {
+      "path": "assets/css/animate.min.css",
+      "filename": "animate.min.css",
+      "sizeBytes": 71750,
+      "sizeFormatted": "70.07 KB",
+      "mimeType": "text/css",
+      "extension": ".css",
+      "dimensions": null,
+      "width": null,
+      "height": null,
+      "aspectRatio": null,
+      "role": "stylesheet",
+      "referencedInCode": true,
+      "referenceLocations": [
+        {
+          "source": "index.html",
+          "context": "html:link"
+        }
+      ],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "assets/css/bootstrap-vCaDZZbr.css",
+      "filename": "bootstrap-vCaDZZbr.css",
+      "sizeBytes": 146861,
+      "sizeFormatted": "143.42 KB",
+      "mimeType": "text/css",
+      "extension": ".css",
+      "dimensions": null,
+      "width": null,
+      "height": null,
+      "aspectRatio": null,
+      "role": "stylesheet",
+      "referencedInCode": true,
+      "referenceLocations": [
+        {
+          "source": "index.html",
+          "context": "html:link"
+        },
+        {
+          "source": "index.html",
+          "context": "html:link"
+        }
+      ],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "assets/css/BrittanySignature.css",
+      "filename": "BrittanySignature.css",
+      "sizeBytes": 409,
+      "sizeFormatted": "0.40 KB",
+      "mimeType": "text/css",
+      "extension": ".css",
+      "dimensions": null,
+      "width": null,
+      "height": null,
+      "aspectRatio": null,
+      "role": "stylesheet",
+      "referencedInCode": true,
+      "referenceLocations": [
+        {
+          "source": "index.html",
+          "context": "html:inline-style-url"
+        },
+        {
+          "source": "index.html",
+          "context": "html:inline-style-url"
+        }
+      ],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "assets/css/css2",
+      "filename": "css2",
+      "sizeBytes": 7496,
+      "sizeFormatted": "7.32 KB",
+      "mimeType": "application/octet-stream",
+      "extension": "",
+      "dimensions": null,
+      "width": null,
+      "height": null,
+      "aspectRatio": null,
+      "role": "document_data",
+      "referencedInCode": true,
+      "referenceLocations": [
+        {
+          "source": "index.html",
+          "context": "html:inline-style-url"
+        }
+      ],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "assets/css/fonts.css",
+      "filename": "fonts.css",
+      "sizeBytes": 161,
+      "sizeFormatted": "0.16 KB",
+      "mimeType": "text/css",
+      "extension": ".css",
+      "dimensions": null,
+      "width": null,
+      "height": null,
+      "aspectRatio": null,
+      "role": "font_asset",
+      "referencedInCode": true,
+      "referenceLocations": [
+        {
+          "source": "index.html",
+          "context": "html:inline-style-url"
+        }
+      ],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "assets/css/Heatwood.css",
+      "filename": "Heatwood.css",
+      "sizeBytes": 371,
+      "sizeFormatted": "0.36 KB",
+      "mimeType": "text/css",
+      "extension": ".css",
+      "dimensions": null,
+      "width": null,
+      "height": null,
+      "aspectRatio": null,
+      "role": "stylesheet",
+      "referencedInCode": true,
+      "referenceLocations": [
+        {
+          "source": "index.html",
+          "context": "html:inline-style-url"
+        }
+      ],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "assets/css/style.css",
+      "filename": "style.css",
+      "sizeBytes": 70315,
+      "sizeFormatted": "68.67 KB",
+      "mimeType": "text/css",
+      "extension": ".css",
+      "dimensions": null,
+      "width": null,
+      "height": null,
+      "aspectRatio": null,
+      "role": "stylesheet",
+      "referencedInCode": true,
+      "referenceLocations": [
+        {
+          "source": "index.html",
+          "context": "html:link"
+        }
+      ],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "assets/css/themesv2-DZZF_N8v.css",
+      "filename": "themesv2-DZZF_N8v.css",
+      "sizeBytes": 7314,
+      "sizeFormatted": "7.14 KB",
+      "mimeType": "text/css",
+      "extension": ".css",
+      "dimensions": null,
+      "width": null,
+      "height": null,
+      "aspectRatio": null,
+      "role": "stylesheet",
+      "referencedInCode": true,
+      "referenceLocations": [
+        {
+          "source": "index.html",
+          "context": "html:link"
+        },
+        {
+          "source": "index.html",
+          "context": "html:link"
+        }
+      ],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "assets/fonts/8vIJ7ww63mVu7gt7-GT7LEc.woff2",
+      "filename": "8vIJ7ww63mVu7gt7-GT7LEc.woff2",
+      "sizeBytes": 14540,
+      "sizeFormatted": "14.20 KB",
+      "mimeType": "font/woff2",
+      "extension": ".woff2",
+      "dimensions": null,
+      "width": null,
+      "height": null,
+      "aspectRatio": null,
+      "role": "font_binary",
+      "referencedInCode": false,
+      "referenceLocations": [],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "assets/fonts/8vIJ7ww63mVu7gt79mT7.woff2",
+      "filename": "8vIJ7ww63mVu7gt79mT7.woff2",
+      "sizeBytes": 25904,
+      "sizeFormatted": "25.30 KB",
+      "mimeType": "font/woff2",
+      "extension": ".woff2",
+      "dimensions": null,
+      "width": null,
+      "height": null,
+      "aspectRatio": null,
+      "role": "font_binary",
+      "referencedInCode": false,
+      "referenceLocations": [],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "assets/fonts/nuFiD-vYSZviVYUb_rj3ij__anPXDTjYgFE_.woff2",
+      "filename": "nuFiD-vYSZviVYUb_rj3ij__anPXDTjYgFE_.woff2",
+      "sizeBytes": 21152,
+      "sizeFormatted": "20.66 KB",
+      "mimeType": "font/woff2",
+      "extension": ".woff2",
+      "dimensions": null,
+      "width": null,
+      "height": null,
+      "aspectRatio": null,
+      "role": "font_binary",
+      "referencedInCode": false,
+      "referenceLocations": [],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "assets/fonts/nuFiD-vYSZviVYUb_rj3ij__anPXDTLYgFE_.woff2",
+      "filename": "nuFiD-vYSZviVYUb_rj3ij__anPXDTLYgFE_.woff2",
+      "sizeBytes": 21140,
+      "sizeFormatted": "20.64 KB",
+      "mimeType": "font/woff2",
+      "extension": ".woff2",
+      "dimensions": null,
+      "width": null,
+      "height": null,
+      "aspectRatio": null,
+      "role": "font_binary",
+      "referencedInCode": false,
+      "referenceLocations": [],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "assets/fonts/nuFiD-vYSZviVYUb_rj3ij__anPXDTPYgFE_.woff2",
+      "filename": "nuFiD-vYSZviVYUb_rj3ij__anPXDTPYgFE_.woff2",
+      "sizeBytes": 9112,
+      "sizeFormatted": "8.90 KB",
+      "mimeType": "font/woff2",
+      "extension": ".woff2",
+      "dimensions": null,
+      "width": null,
+      "height": null,
+      "aspectRatio": null,
+      "role": "font_binary",
+      "referencedInCode": false,
+      "referenceLocations": [],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "assets/fonts/nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgA.woff2",
+      "filename": "nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgA.woff2",
+      "sizeBytes": 38404,
+      "sizeFormatted": "37.50 KB",
+      "mimeType": "font/woff2",
+      "extension": ".woff2",
+      "dimensions": null,
+      "width": null,
+      "height": null,
+      "aspectRatio": null,
+      "role": "font_binary",
+      "referencedInCode": false,
+      "referenceLocations": [],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "assets/fonts/nuFkD-vYSZviVYUb_rj3ij__anPXDTnogkk7.woff2",
+      "filename": "nuFkD-vYSZviVYUb_rj3ij__anPXDTnogkk7.woff2",
+      "sizeBytes": 38804,
+      "sizeFormatted": "37.89 KB",
+      "mimeType": "font/woff2",
+      "extension": ".woff2",
+      "dimensions": null,
+      "width": null,
+      "height": null,
+      "aspectRatio": null,
+      "role": "font_binary",
+      "referencedInCode": false,
+      "referenceLocations": [],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "assets/fonts/nuFkD-vYSZviVYUb_rj3ij__anPXDTnohkk72xU.woff2",
+      "filename": "nuFkD-vYSZviVYUb_rj3ij__anPXDTnohkk72xU.woff2",
+      "sizeBytes": 23304,
+      "sizeFormatted": "22.76 KB",
+      "mimeType": "font/woff2",
+      "extension": ".woff2",
+      "dimensions": null,
+      "width": null,
+      "height": null,
+      "aspectRatio": null,
+      "role": "font_binary",
+      "referencedInCode": false,
+      "referenceLocations": [],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "assets/fonts/nuFkD-vYSZviVYUb_rj3ij__anPXDTnojEk72xU.woff2",
+      "filename": "nuFkD-vYSZviVYUb_rj3ij__anPXDTnojEk72xU.woff2",
+      "sizeBytes": 23380,
+      "sizeFormatted": "22.83 KB",
+      "mimeType": "font/woff2",
+      "extension": ".woff2",
+      "dimensions": null,
+      "width": null,
+      "height": null,
+      "aspectRatio": null,
+      "role": "font_binary",
+      "referencedInCode": false,
+      "referenceLocations": [],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "assets/fonts/nuFkD-vYSZviVYUb_rj3ij__anPXDTnojUk72xU.woff2",
+      "filename": "nuFkD-vYSZviVYUb_rj3ij__anPXDTnojUk72xU.woff2",
+      "sizeBytes": 9568,
+      "sizeFormatted": "9.34 KB",
+      "mimeType": "font/woff2",
+      "extension": ".woff2",
+      "dimensions": null,
+      "width": null,
+      "height": null,
+      "aspectRatio": null,
+      "role": "font_binary",
+      "referencedInCode": false,
+      "referenceLocations": [],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "assets/images/29817-gallery-1676444055.jpg",
+      "filename": "29817-gallery-1676444055.jpg",
+      "sizeBytes": 22323,
+      "sizeFormatted": "21.80 KB",
+      "mimeType": "image/jpeg",
+      "extension": ".jpg",
+      "dimensions": "450x544",
+      "width": 450,
+      "height": 544,
+      "aspectRatio": "0.827",
+      "role": "gallery_photo",
+      "referencedInCode": true,
+      "referenceLocations": [
+        {
+          "source": "index.html",
+          "context": "html:img"
+        }
+      ],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "assets/images/29817-gallery-1676444135.jpg",
+      "filename": "29817-gallery-1676444135.jpg",
+      "sizeBytes": 12224,
+      "sizeFormatted": "11.94 KB",
+      "mimeType": "image/jpeg",
+      "extension": ".jpg",
+      "dimensions": "450x450",
+      "width": 450,
+      "height": 450,
+      "aspectRatio": "1.000",
+      "role": "gallery_photo",
+      "referencedInCode": true,
+      "referenceLocations": [
+        {
+          "source": "index.html",
+          "context": "html:img"
+        },
+        {
+          "source": "index.html",
+          "context": "html:img"
+        }
+      ],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "assets/images/29817-gallery-1676444142.jpg",
+      "filename": "29817-gallery-1676444142.jpg",
+      "sizeBytes": 10139,
+      "sizeFormatted": "9.90 KB",
+      "mimeType": "image/jpeg",
+      "extension": ".jpg",
+      "dimensions": "450x450",
+      "width": 450,
+      "height": 450,
+      "aspectRatio": "1.000",
+      "role": "gallery_photo",
+      "referencedInCode": true,
+      "referenceLocations": [
+        {
+          "source": "index.html",
+          "context": "html:img"
+        },
+        {
+          "source": "index.html",
+          "context": "html:img"
+        }
+      ],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "assets/images/adat-batak.jpg",
+      "filename": "adat-batak.jpg",
+      "sizeBytes": 25881,
+      "sizeFormatted": "25.27 KB",
+      "mimeType": "image/jpeg",
+      "extension": ".jpg",
+      "dimensions": "450x450",
+      "width": 450,
+      "height": 450,
+      "aspectRatio": "1.000",
+      "role": "image_asset",
+      "referencedInCode": false,
+      "referenceLocations": [],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "assets/images/api",
+      "filename": "api",
+      "sizeBytes": 420,
+      "sizeFormatted": "0.41 KB",
+      "mimeType": "application/octet-stream",
+      "extension": "",
+      "dimensions": null,
+      "width": null,
+      "height": null,
+      "aspectRatio": null,
+      "role": "document_data",
+      "referencedInCode": true,
+      "referenceLocations": [
+        {
+          "source": "index.html",
+          "context": "html:img"
+        },
+        {
+          "source": "index.html",
+          "context": "html:img"
+        },
+        {
+          "source": "index.html",
+          "context": "html:img"
+        },
+        {
+          "source": "index.html",
+          "context": "html:img"
+        },
+        {
+          "source": "index.html",
+          "context": "html:img"
+        },
+        {
+          "source": "index.html",
+          "context": "html:img"
+        },
+        {
+          "source": "index.html",
+          "context": "html:img"
+        }
+      ],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "assets/images/bg.webp",
+      "filename": "bg.webp",
+      "sizeBytes": 46906,
+      "sizeFormatted": "45.81 KB",
+      "mimeType": "image/webp",
+      "extension": ".webp",
+      "dimensions": "1080x1920",
+      "width": 1080,
+      "height": 1920,
+      "aspectRatio": "0.563",
+      "role": "background_texture",
+      "referencedInCode": true,
+      "referenceLocations": [
+        {
+          "source": "index.html",
+          "context": "html:inline-style-url"
+        },
+        {
+          "source": "index.html",
+          "context": "html:inline-style-url"
+        },
+        {
+          "source": "index.html",
+          "context": "html:inline-style-url"
+        },
+        {
+          "source": "index.html",
+          "context": "html:inline-style-url"
+        },
+        {
+          "source": "index.html",
+          "context": "html:inline-style-url"
+        },
+        {
+          "source": "index.html",
+          "context": "html:inline-style-url"
+        },
+        {
+          "source": "index.html",
+          "context": "html:inline-style-url"
+        },
+        {
+          "source": "index.html",
+          "context": "html:inline-style-url"
+        },
+        {
+          "source": "index.html",
+          "context": "html:inline-style-url"
+        },
+        {
+          "source": "index.html",
+          "context": "html:inline-style-url"
+        },
+        {
+          "source": "index.html",
+          "context": "html:inline-style-url"
+        }
+      ],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "assets/images/btn_app_store.png",
+      "filename": "btn_app_store.png",
+      "sizeBytes": 4714,
+      "sizeFormatted": "4.60 KB",
+      "mimeType": "image/png",
+      "extension": ".png",
+      "dimensions": "498x167",
+      "width": 498,
+      "height": 167,
+      "aspectRatio": "2.982",
+      "role": "app_badge",
+      "referencedInCode": true,
+      "referenceLocations": [
+        {
+          "source": "index.html",
+          "context": "html:img"
+        }
+      ],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "assets/images/btn_play_store.png",
+      "filename": "btn_play_store.png",
+      "sizeBytes": 14027,
+      "sizeFormatted": "13.70 KB",
+      "mimeType": "image/png",
+      "extension": ".png",
+      "dimensions": "564x168",
+      "width": 564,
+      "height": 168,
+      "aspectRatio": "3.357",
+      "role": "app_badge",
+      "referencedInCode": true,
+      "referenceLocations": [
+        {
+          "source": "index.html",
+          "context": "html:img"
+        }
+      ],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "assets/images/frame-bm.webp",
+      "filename": "frame-bm.webp",
+      "sizeBytes": 37226,
+      "sizeFormatted": "36.35 KB",
+      "mimeType": "image/webp",
+      "extension": ".webp",
+      "dimensions": "1080x145",
+      "width": 1080,
+      "height": 145,
+      "aspectRatio": "7.448",
+      "role": "frame_edge",
+      "referencedInCode": true,
+      "referenceLocations": [
+        {
+          "source": "index.html",
+          "context": "html:img"
+        },
+        {
+          "source": "index.html",
+          "context": "html:img"
+        },
+        {
+          "source": "index.html",
+          "context": "html:img"
+        },
+        {
+          "source": "index.html",
+          "context": "html:img"
+        },
+        {
+          "source": "index.html",
+          "context": "html:img"
+        },
+        {
+          "source": "index.html",
+          "context": "html:img"
+        },
+        {
+          "source": "index.html",
+          "context": "html:img"
+        },
+        {
+          "source": "index.html",
+          "context": "html:img"
+        },
+        {
+          "source": "index.html",
+          "context": "html:img"
+        },
+        {
+          "source": "index.html",
+          "context": "html:img"
+        },
+        {
+          "source": "index.html",
+          "context": "html:img"
+        }
+      ],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "assets/images/frame-tm.webp",
+      "filename": "frame-tm.webp",
+      "sizeBytes": 36272,
+      "sizeFormatted": "35.42 KB",
+      "mimeType": "image/webp",
+      "extension": ".webp",
+      "dimensions": "1080x145",
+      "width": 1080,
+      "height": 145,
+      "aspectRatio": "7.448",
+      "role": "frame_edge",
+      "referencedInCode": true,
+      "referenceLocations": [
+        {
+          "source": "index.html",
+          "context": "html:img"
+        },
+        {
+          "source": "index.html",
+          "context": "html:img"
+        },
+        {
+          "source": "index.html",
+          "context": "html:img"
+        },
+        {
+          "source": "index.html",
+          "context": "html:img"
+        },
+        {
+          "source": "index.html",
+          "context": "html:img"
+        },
+        {
+          "source": "index.html",
+          "context": "html:img"
+        },
+        {
+          "source": "index.html",
+          "context": "html:img"
+        },
+        {
+          "source": "index.html",
+          "context": "html:img"
+        },
+        {
+          "source": "index.html",
+          "context": "html:img"
+        },
+        {
+          "source": "index.html",
+          "context": "html:img"
+        },
+        {
+          "source": "index.html",
+          "context": "html:img"
+        }
+      ],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "assets/images/no-image.jpg",
+      "filename": "no-image.jpg",
+      "sizeBytes": 8164,
+      "sizeFormatted": "7.97 KB",
+      "mimeType": "image/jpeg",
+      "extension": ".jpg",
+      "dimensions": "463x335",
+      "width": 463,
+      "height": 335,
+      "aspectRatio": "1.382",
+      "role": "image_asset",
+      "referencedInCode": true,
+      "referenceLocations": [
+        {
+          "source": "index.html",
+          "context": "html:img"
+        },
+        {
+          "source": "index.html",
+          "context": "html:img"
+        },
+        {
+          "source": "index.html",
+          "context": "html:inline-style-url"
+        }
+      ],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "assets/images/rumah-adat.webp",
+      "filename": "rumah-adat.webp",
+      "sizeBytes": 73050,
+      "sizeFormatted": "71.34 KB",
+      "mimeType": "image/webp",
+      "extension": ".webp",
+      "dimensions": "450x557",
+      "width": 450,
+      "height": 557,
+      "aspectRatio": "0.808",
+      "role": "image_asset",
+      "referencedInCode": true,
+      "referenceLocations": [
+        {
+          "source": "index.html",
+          "context": "html:img"
+        }
+      ],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "assets/images/ulos.webp",
+      "filename": "ulos.webp",
+      "sizeBytes": 23882,
+      "sizeFormatted": "23.32 KB",
+      "mimeType": "image/webp",
+      "extension": ".webp",
+      "dimensions": "450x234",
+      "width": 450,
+      "height": 234,
+      "aspectRatio": "1.923",
+      "role": "image_asset",
+      "referencedInCode": true,
+      "referenceLocations": [
+        {
+          "source": "index.html",
+          "context": "html:img"
+        }
+      ],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "assets/js/theme-app.js",
+      "filename": "theme-app.js",
+      "sizeBytes": 1205051,
+      "sizeFormatted": "1176.81 KB",
+      "mimeType": "application/javascript",
+      "extension": ".js",
+      "dimensions": null,
+      "width": null,
+      "height": null,
+      "aspectRatio": null,
+      "role": "javascript_bundle",
+      "referencedInCode": true,
+      "referenceLocations": [
+        {
+          "source": "index.html",
+          "context": "html:script"
+        }
+      ],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "assets/js/themesv2.js",
+      "filename": "themesv2.js",
+      "sizeBytes": 30211,
+      "sizeFormatted": "29.50 KB",
+      "mimeType": "application/javascript",
+      "extension": ".js",
+      "dimensions": null,
+      "width": null,
+      "height": null,
+      "aspectRatio": null,
+      "role": "javascript_bundle",
+      "referencedInCode": true,
+      "referenceLocations": [
+        {
+          "source": "index.html",
+          "context": "html:script"
+        }
+      ],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "assets/music/tobadream-theme-song-viky-sianipar.mp3",
+      "filename": "tobadream-theme-song-viky-sianipar.mp3",
+      "sizeBytes": 3470577,
+      "sizeFormatted": "3389.24 KB",
+      "mimeType": "audio/mpeg",
+      "extension": ".mp3",
+      "dimensions": null,
+      "width": null,
+      "height": null,
+      "aspectRatio": null,
+      "role": "audio_bgm",
+      "referencedInCode": true,
+      "referenceLocations": [
+        {
+          "source": "index.html",
+          "context": "html:media"
+        }
+      ],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "index.html",
+      "filename": "index.html",
+      "sizeBytes": 78065,
+      "sizeFormatted": "76.24 KB",
+      "mimeType": "text/html",
+      "extension": ".html",
+      "dimensions": null,
+      "width": null,
+      "height": null,
+      "aspectRatio": null,
+      "role": "document_data",
+      "referencedInCode": false,
+      "referenceLocations": [],
+      "isConfirmedLocal": true
+    },
+    {
+      "path": "README.md",
+      "filename": "README.md",
+      "sizeBytes": 380,
+      "sizeFormatted": "0.37 KB",
+      "mimeType": "application/octet-stream",
+      "extension": ".md",
+      "dimensions": null,
+      "width": null,
+      "height": null,
+      "aspectRatio": null,
+      "role": "document_data",
+      "referencedInCode": false,
+      "referenceLocations": [],
+      "isConfirmedLocal": true
+    }
+  ],
+  "missingExternalAssets": [
+    {
+      "url": "BrittanySignature.eot",
+      "type": "missing_local_file",
+      "referencedBy": [
+        {
+          "source": "assets/css/BrittanySignature.css",
+          "context": "css:url"
+        },
+        {
+          "source": "assets/css/BrittanySignature.css",
+          "context": "css:url"
+        }
+      ]
+    },
+    {
+      "url": "BrittanySignature.woff2",
+      "type": "missing_local_file",
+      "referencedBy": [
+        {
+          "source": "assets/css/BrittanySignature.css",
+          "context": "css:url"
+        }
+      ]
+    },
+    {
+      "url": "BrittanySignature.woff",
+      "type": "missing_local_file",
+      "referencedBy": [
+        {
+          "source": "assets/css/BrittanySignature.css",
+          "context": "css:url"
+        }
+      ]
+    },
+    {
+      "url": "BrittanySignature.ttf",
+      "type": "missing_local_file",
+      "referencedBy": [
+        {
+          "source": "assets/css/BrittanySignature.css",
+          "context": "css:url"
+        }
+      ]
+    },
+    {
+      "url": "BrittanySignature.svg",
+      "type": "missing_local_file",
+      "referencedBy": [
+        {
+          "source": "assets/css/BrittanySignature.css",
+          "context": "css:url"
+        }
+      ]
+    },
+    {
+      "url": "PhotographSignature.ttf",
+      "type": "missing_local_file",
+      "referencedBy": [
+        {
+          "source": "assets/css/fonts.css",
+          "context": "css:url"
+        }
+      ]
+    },
+    {
+      "url": "fonts/Heatwood.eot",
+      "type": "missing_local_file",
+      "referencedBy": [
+        {
+          "source": "assets/css/Heatwood.css",
+          "context": "css:url"
+        },
+        {
+          "source": "assets/css/Heatwood.css",
+          "context": "css:url"
+        }
+      ]
+    },
+    {
+      "url": "fonts/Heatwood.woff2",
+      "type": "missing_local_file",
+      "referencedBy": [
+        {
+          "source": "assets/css/Heatwood.css",
+          "context": "css:url"
+        }
+      ]
+    },
+    {
+      "url": "fonts/Heatwood.woff",
+      "type": "missing_local_file",
+      "referencedBy": [
+        {
+          "source": "assets/css/Heatwood.css",
+          "context": "css:url"
+        }
+      ]
+    },
+    {
+      "url": "fonts/Heatwood.ttf",
+      "type": "missing_local_file",
+      "referencedBy": [
+        {
+          "source": "assets/css/Heatwood.css",
+          "context": "css:url"
+        }
+      ]
+    },
+    {
+      "url": "fonts/Heatwood.svg",
+      "type": "missing_local_file",
+      "referencedBy": [
+        {
+          "source": "assets/css/Heatwood.css",
+          "context": "css:url"
+        }
+      ]
+    },
+    {
+      "url": "./Phosphor-Fill.woff2",
+      "type": "missing_local_file",
+      "referencedBy": [
+        {
+          "source": "assets/css/style.css",
+          "context": "css:url"
+        }
+      ]
+    },
+    {
+      "url": "./Phosphor-Fill.woff",
+      "type": "missing_local_file",
+      "referencedBy": [
+        {
+          "source": "assets/css/style.css",
+          "context": "css:url"
+        }
+      ]
+    },
+    {
+      "url": "./Phosphor-Fill.ttf",
+      "type": "missing_local_file",
+      "referencedBy": [
+        {
+          "source": "assets/css/style.css",
+          "context": "css:url"
+        }
+      ]
+    },
+    {
+      "url": "./Phosphor-Fill.svg",
+      "type": "missing_local_file",
+      "referencedBy": [
+        {
+          "source": "assets/css/style.css",
+          "context": "css:url"
+        }
+      ]
+    }
+  ]
+}

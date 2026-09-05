@@ -1,0 +1,25 @@
+{
+  "audioControl": {
+    "title": "Wu Shi Nian Yi Hou (50 Tahun Kemudian)",
+    "remoteMusicUrl": "https://assets.satumomen.com/musics/wu-shi-nian-yi-hou-50-tahun-kemudian-chinese-song-subtitle-indonesia-lirik-terjemahan.mp3",
+    "autoplayOnOpen": true,
+    "persistentDockButton": true
+  },
+  "modals": [
+    "opening-modal",
+    "rsvp-modal",
+    "browser-support-modal"
+  ],
+  "clipboardCopy": [
+    "BCA 12345678 (Salin Rekening)",
+    "Jl. Wildan Sari 1 No 11 Banjarmasin Barat 70119 (Salin Alamat)"
+  ],
+  "sliders": [
+    "gallery-swiper-carousel",
+    "story-slider"
+  ],
+  "lightbox": {
+    "enabled": true,
+    "triggerSelector": "[data-gallery]"
+  }
+}

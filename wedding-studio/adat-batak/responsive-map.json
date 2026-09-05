@@ -1,0 +1,19 @@
+{
+  "virtualCanvas": {
+    "standardWidth": 414,
+    "standardHeight": 736,
+    "aspectRatio": "9:16 approx",
+    "desktopScaling": "scale-to-fit with dark/pattern background",
+    "mobileScaling": "100vw x 100vh with touch scroll locking"
+  },
+  "viewportsTested": [
+    "320x568 (iPhone SE)",
+    "360x640 (Android standard)",
+    "375x667 (iPhone 8)",
+    "390x844 (iPhone 13/14)",
+    "414x896 (iPhone XR/11)",
+    "768x1024 (iPad)",
+    "1280x720 (Laptop HD)",
+    "1920x1080 (Desktop FHD)"
+  ]
+}

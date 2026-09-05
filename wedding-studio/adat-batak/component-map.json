@@ -1,0 +1,71 @@
+{
+  "detectedTheme": "adat-batak",
+  "geometry": {
+    "isVirtualMobileCanvas": true,
+    "baseWidth": 414,
+    "baseHeight": 736,
+    "scalingMode": "transform-scale / fixed-container",
+    "cornerFrames": {
+      "top_left": "images/tl.webp",
+      "top_mid": "images/tm.webp",
+      "top_right": "images/tr.webp",
+      "bottom_left": "images/bl.webp",
+      "bottom_right": "images/br.webp",
+      "center_frame": "images/frame.webp",
+      "background_texture": "images/bg.webp"
+    }
+  },
+  "sections": [
+    {
+      "id": "opening_modal",
+      "name": "Modal Opening / Cover Tamu",
+      "hasAudioTrigger": true,
+      "actionButton": "Buka Undangan"
+    },
+    {
+      "id": "ayat_salam",
+      "name": "Ayat Suci & Salam Pembuka (Surah Al-Baqarah: 223)"
+    },
+    {
+      "id": "couple_profile",
+      "name": "Profil Kedua Mempelai (Liena Mulyadi & Eddy S. Anwar)"
+    },
+    {
+      "id": "event_schedule",
+      "name": "Jadwal Akad & Resepsi + Maps Link"
+    },
+    {
+      "id": "gallery_slider",
+      "name": "Galeri Foto (Swiper / Lightbox)",
+      "photoCount": 13
+    },
+    {
+      "id": "love_story_timeline",
+      "name": "Love Story (First Meet, Perjalanan Kisah Cinta)"
+    },
+    {
+      "id": "wedding_gift",
+      "name": "Tanda Kasih (Rekening BCA / Kirim Kado + Salin Rekening)"
+    },
+    {
+      "id": "instagram_filter",
+      "name": "Instagram Wedding Filter"
+    },
+    {
+      "id": "contact_person",
+      "name": "Hubungi Narahubung via WhatsApp"
+    },
+    {
+      "id": "rsvp_comments",
+      "name": "Form RSVP Kehadiran & Ucapan Doa"
+    },
+    {
+      "id": "dock_navigation",
+      "name": "Floating Bottom Dock Menu (Opening, Salam, Mempelai, Acara, Gallery, Love Story, Gift, Filter, Contact)"
+    },
+    {
+      "id": "audio_player",
+      "name": "Floating Audio Toggle (Music: Wu Shi Nian Yi Hou)"
+    }
+  ]
+}
