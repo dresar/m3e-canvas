@@ -18,34 +18,46 @@ export type AiSettings = {
 };
 
 export const PROVIDERS: { key: Provider; label: string; baseUrl: string; model: string; keysUrl?: string }[] = [
-  { key: "openai", label: "OpenAI", baseUrl: "https://api.openai.com/v1", model: "gpt-5.6-luna", keysUrl: "https://platform.openai.com/api-keys" },
-  { key: "claude", label: "Claude", baseUrl: "https://api.anthropic.com", model: "claude-sonnet-5", keysUrl: "https://console.anthropic.com/settings/keys" },
-  { key: "gemini", label: "Gemini", baseUrl: "https://generativelanguage.googleapis.com/v1beta/openai", model: "gemini-3.8-flash", keysUrl: "https://aistudio.google.com/apikey" },
-  { key: "deepseek", label: "DeepSeek", baseUrl: "https://api.deepseek.com/v1", model: "deepseek-v4-flash", keysUrl: "https://platform.deepseek.com/api_keys" },
+  {
+    key: "gemini",
+    label: "Gemini",
+    baseUrl: process.env.NEXT_PUBLIC_AI_BASE_URL || "https://api.holver.web.id/v1",
+    model: process.env.NEXT_PUBLIC_AI_MODEL || "gemini-3.7-flash",
+    keysUrl: "https://api.holver.web.id",
+  },
 ];
 
 export const providerSpec = (k: Provider) => PROVIDERS.find((p) => p.key === k) ?? PROVIDERS[0];
 
-export const DEFAULT_AI: AiSettings = { provider: PROVIDERS[0].key, baseUrl: PROVIDERS[0].baseUrl, model: PROVIDERS[0].model, key: "" };
+export const DEFAULT_AI: AiSettings = {
+  provider: "gemini",
+  baseUrl: process.env.NEXT_PUBLIC_AI_BASE_URL || "https://api.holver.web.id/v1",
+  model: process.env.NEXT_PUBLIC_AI_MODEL || "gemini-3.7-flash",
+  key: process.env.NEXT_PUBLIC_AI_KEY || "",
+};
 
-const STORE_KEY = "m3e:ai";
+const STORE_KEY = "m3e:ai:v4";
 
 export function loadAiSettings(): AiSettings {
+  try {
+    localStorage.removeItem("m3e:ai");
+    localStorage.removeItem("m3e:ai:v2");
+    localStorage.removeItem("m3e:ai:v3");
+  } catch {}
   const s = { ...DEFAULT_AI };
   try {
     const raw = localStorage.getItem(STORE_KEY);
     if (raw) {
       const v = JSON.parse(raw) as Partial<AiSettings>;
-      if (PROVIDERS.some((p) => p.key === v.provider)) s.provider = v.provider as Provider;
-      if (typeof v.baseUrl === "string") s.baseUrl = v.baseUrl;
-      if (typeof v.model === "string") s.model = v.model;
-      if (typeof v.key === "string") s.key = v.key;
+      if (v.provider && PROVIDERS.some((p) => p.key === v.provider)) s.provider = v.provider as Provider;
+      if (typeof v.baseUrl === "string" && v.baseUrl && !v.baseUrl.includes("anthropic.com") && !v.baseUrl.includes("openai.com")) s.baseUrl = v.baseUrl;
+      if (typeof v.model === "string" && v.model && !v.model.includes("claude")) s.model = v.model;
+      if (typeof v.key === "string" && v.key) s.key = v.key;
     }
   } catch {}
   return s;
 }
 
-/** Settings live in this browser only, like the document itself. */
 export function saveAiSettings(s: AiSettings) {
   try {
     localStorage.setItem(STORE_KEY, JSON.stringify(s));
@@ -54,10 +66,9 @@ export function saveAiSettings(s: AiSettings) {
 
 const isLocal = (u: string) => /^https?:\/\/(localhost|127\.0\.0\.1|\[::1\])(:|\/|$)/i.test(u.trim());
 
-/** a hosted endpoint needs a key; a server on this machine may run without one */
-export const hasKey = (s: AiSettings) => s.key.trim().length > 0 || isLocal(s.baseUrl);
+export const hasKey = (s: AiSettings) =>
+  (s.key || process.env.NEXT_PUBLIC_AI_KEY || "").trim().length > 0 || isLocal(s.baseUrl);
 
-/** the key must not travel over plain http, except to this machine */
 export const isSecureUrl = (u: string) => /^https:\/\//i.test(u.trim()) || isLocal(u);
 
 const trimSlash = (u: string) => u.trim().replace(/\/+$/, "");
@@ -75,44 +86,28 @@ async function readError(res: Response): Promise<string> {
   return `${res.status} ${res.statusText}${detail ? `: ${detail.slice(0, 300)}` : ""}`;
 }
 
-/** one round trip: a system prompt and a user message in, the model's text out */
 export async function complete(s: AiSettings, system: string, user: string, signal?: AbortSignal, maxTokens = 4096): Promise<string> {
-  const base = trimSlash(s.baseUrl);
-  const model = s.model.trim();
+  const base = trimSlash(
+    (!s.baseUrl || s.baseUrl.includes("anthropic.com") || s.baseUrl.includes("openai.com"))
+      ? (process.env.NEXT_PUBLIC_AI_BASE_URL || "https://api.holver.web.id/v1")
+      : s.baseUrl
+  );
+  const model = ((!s.model || s.model.includes("claude") || s.model.includes("gpt-"))
+    ? (process.env.NEXT_PUBLIC_AI_MODEL || "gemini-3.7-flash")
+    : s.model
+  ).trim();
+  const key = (s.key || process.env.NEXT_PUBLIC_AI_KEY || "").trim();
   if (!model) throw new Error("model");
   if (!isSecureUrl(base)) throw new Error("insecure");
-  if (s.provider === "claude") {
-    const res = await fetch(`${base}/v1/messages`, {
-      method: "POST",
-      signal,
-      headers: {
-        "content-type": "application/json",
-        "x-api-key": s.key.trim(),
-        "anthropic-version": "2023-06-01",
-        "anthropic-dangerous-direct-browser-access": "true",
-      },
-      body: JSON.stringify({ model, max_tokens: Math.min(maxTokens, 8192), system, messages: [{ role: "user", content: user }] }),
-    });
-    if (!res.ok) throw new Error(await readError(res));
-    const j = await res.json();
-    if (j.stop_reason === "refusal") throw new Error("refusal");
-    if (j.stop_reason === "max_tokens") throw new Error("long");
-    return (j.content ?? [])
-      .filter((b: { type: string }) => b.type === "text")
-      .map((b: { text: string }) => b.text)
-      .join("");
-  }
   const headers: Record<string, string> = { "content-type": "application/json" };
-  if (s.key.trim()) headers.authorization = `Bearer ${s.key.trim()}`;
+  if (key) headers.authorization = `Bearer ${key}`;
   const res = await fetch(`${base}/chat/completions`, {
     method: "POST",
     signal,
     headers,
     body: JSON.stringify({
       model,
-      /* OpenAI's newer models refuse `max_tokens` and default generously, so they get no budget;
-         the other compatible endpoints cap around 8k */
-      ...(s.provider === "openai" ? {} : { max_tokens: Math.min(maxTokens, 8192) }),
+      max_tokens: Math.min(maxTokens, 8192),
       messages: [
         { role: "system", content: system },
         { role: "user", content: user },

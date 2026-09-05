@@ -1,0 +1,193 @@
+{
+  "version": "1.0.0",
+  "cdnBase": "https://cdn.jsdelivr.net/gh/dresar/wedding-assets-cdn@main/assets",
+  "themes": [
+    {
+      "id": "theme-sage",
+      "name": "Sage Green Botanic",
+      "primary": "#4a6b57",
+      "secondary": "#8fa89b",
+      "accent": "#d4af37",
+      "background": "#f7f9f7",
+      "card": "#ffffff",
+      "text": "#24332a",
+      "fontHeading": "Cormorant Garamond",
+      "fontBody": "Plus Jakarta Sans"
+    },
+    {
+      "id": "theme-gold",
+      "name": "Royal Classic Gold",
+      "primary": "#b38728",
+      "secondary": "#d4af37",
+      "accent": "#c29938",
+      "background": "#faf8f2",
+      "card": "#ffffff",
+      "text": "#2d2415",
+      "fontHeading": "Cinzel",
+      "fontBody": "Plus Jakarta Sans"
+    },
+    {
+      "id": "theme-rustic",
+      "name": "Rustic Terracotta",
+      "primary": "#a2583e",
+      "secondary": "#cf8d75",
+      "accent": "#d4976a",
+      "background": "#fdfaf7",
+      "card": "#ffffff",
+      "text": "#3a1f15",
+      "fontHeading": "Playfair Display",
+      "fontBody": "Plus Jakarta Sans"
+    },
+    {
+      "id": "theme-blush",
+      "name": "Romantic Blush Pink",
+      "primary": "#b8697a",
+      "secondary": "#e2a9b5",
+      "accent": "#d88a99",
+      "background": "#fdf8f9",
+      "card": "#ffffff",
+      "text": "#381a21",
+      "fontHeading": "Great Vibes",
+      "fontBody": "Plus Jakarta Sans"
+    }
+  ],
+  "ornaments": [
+    {
+      "id": "orn-sage-corner-01",
+      "name": "Sage Botanical Corner",
+      "category": "corner",
+      "theme": "sage",
+      "url": "https://cdn.jsdelivr.net/gh/dresar/wedding-assets-cdn@main/assets/ornaments/sage-corner-01.png",
+      "recommendedAnimation": "floral-unfold",
+      "width": 180,
+      "height": 180
+    },
+    {
+      "id": "orn-gold-arch-01",
+      "name": "Geometric Gold Arch",
+      "category": "frame",
+      "theme": "gold",
+      "url": "https://cdn.jsdelivr.net/gh/dresar/wedding-assets-cdn@main/assets/ornaments/gold-arch-01.png",
+      "recommendedAnimation": "fade-scale-in",
+      "width": 360,
+      "height": 520
+    },
+    {
+      "id": "orn-blush-divider-01",
+      "name": "Floral Vintage Divider",
+      "category": "divider",
+      "theme": "blush",
+      "url": "https://cdn.jsdelivr.net/gh/dresar/wedding-assets-cdn@main/assets/ornaments/blush-divider-01.png",
+      "recommendedAnimation": "slide-expand",
+      "width": 240,
+      "height": 40
+    },
+    {
+      "id": "orn-rustic-wreath-01",
+      "name": "Rustic Eucalyptus Wreath",
+      "category": "wreath",
+      "theme": "rustic",
+      "url": "https://cdn.jsdelivr.net/gh/dresar/wedding-assets-cdn@main/assets/ornaments/rustic-wreath-01.png",
+      "recommendedAnimation": "rotate-spring",
+      "width": 260,
+      "height": 260
+    }
+  ],
+  "backgrounds": [
+    {
+      "id": "bg-linen-soft",
+      "name": "Warm Linen Canvas",
+      "theme": "all",
+      "url": "https://cdn.jsdelivr.net/gh/dresar/wedding-assets-cdn@main/assets/backgrounds/linen-soft.jpg",
+      "colorFallback": "#fbf9f5"
+    },
+    {
+      "id": "bg-sage-watercolor",
+      "name": "Muted Sage Watercolor",
+      "theme": "sage",
+      "url": "https://cdn.jsdelivr.net/gh/dresar/wedding-assets-cdn@main/assets/backgrounds/sage-watercolor.jpg",
+      "colorFallback": "#f0f4f1"
+    },
+    {
+      "id": "bg-marble-gold",
+      "name": "Carrara Marble Gold Vein",
+      "theme": "gold",
+      "url": "https://cdn.jsdelivr.net/gh/dresar/wedding-assets-cdn@main/assets/backgrounds/marble-gold.jpg",
+      "colorFallback": "#fcfbf7"
+    },
+    {
+      "id": "bg-dark-emerald",
+      "name": "Velvet Midnight Emerald",
+      "theme": "dark",
+      "url": "https://cdn.jsdelivr.net/gh/dresar/wedding-assets-cdn@main/assets/backgrounds/dark-emerald.jpg",
+      "colorFallback": "#06221c"
+    }
+  ],
+  "envelopes": [
+    {
+      "id": "env-kraft-rustic",
+      "name": "Kraft Paper with Gold Seal",
+      "theme": "rustic",
+      "sealUrl": "https://cdn.jsdelivr.net/gh/dresar/wedding-assets-cdn@main/assets/envelopes/gold-wax-seal.png",
+      "flapColor": "#c5a47e",
+      "bodyColor": "#b8956e"
+    },
+    {
+      "id": "env-sage-luxury",
+      "name": "Sage Luxury Envelope",
+      "theme": "sage",
+      "sealUrl": "https://cdn.jsdelivr.net/gh/dresar/wedding-assets-cdn@main/assets/envelopes/sage-wax-seal.png",
+      "flapColor": "#8ba898",
+      "bodyColor": "#7a9988"
+    }
+  ],
+  "audio": [
+    {
+      "id": "audio-romantic-acoustic",
+      "title": "Acoustic Sunset Romance",
+      "artist": "Classical Trio",
+      "url": "https://cdn.jsdelivr.net/gh/dresar/wedding-assets-cdn@main/assets/audio/acoustic-romance.mp3",
+      "duration": "03:42"
+    },
+    {
+      "id": "audio-piano-symphony",
+      "title": "Canon in D (Modern Piano)",
+      "artist": "Grand Piano",
+      "url": "https://cdn.jsdelivr.net/gh/dresar/wedding-assets-cdn@main/assets/audio/canon-in-d.mp3",
+      "duration": "04:15"
+    },
+    {
+      "id": "audio-lofi-wedding",
+      "title": "Warm Coffee & Love (Lo-Fi)",
+      "artist": "ChillBeats",
+      "url": "https://cdn.jsdelivr.net/gh/dresar/wedding-assets-cdn@main/assets/audio/lofi-wedding.mp3",
+      "duration": "02:58"
+    }
+  ],
+  "animations": [
+    {
+      "id": "anim-fade-up-spring",
+      "name": "Fade Up Spring",
+      "engine": "animejs",
+      "props": { "translateY": [30, 0], "opacity": [0, 1], "easing": "easeOutElastic(1, .8)", "duration": 1200 }
+    },
+    {
+      "id": "anim-floral-unfold",
+      "name": "Floral Unfold & Scale",
+      "engine": "animejs",
+      "props": { "scale": [0.8, 1], "rotate": [-15, 0], "opacity": [0, 1], "easing": "easeOutCubic", "duration": 1400 }
+    },
+    {
+      "id": "anim-wax-seal-pop",
+      "name": "Wax Seal Unseal Click",
+      "engine": "animejs",
+      "props": { "scale": [1, 1.3, 0], "opacity": [1, 1, 0], "rotate": [0, 20], "duration": 600, "easing": "easeInOutBack" }
+    },
+    {
+      "id": "anim-turntable-spin",
+      "name": "Turntable Disc Continuous Spin",
+      "engine": "css",
+      "keyframes": "@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }"
+    }
+  ]
+}
