@@ -17,6 +17,7 @@ export function generateHtmlCode(project: WeddingProject): string {
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
 </head>
 <body>
   <div class="invitation-container" id="app">
@@ -620,6 +621,14 @@ export function generateJsCode(): string {
   const audioWidget = document.getElementById('audio-widget');
 
   btnOpen?.addEventListener('click', () => {
+    if (typeof window.confetti === 'function') {
+      window.confetti({
+        particleCount: 90,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#d4af37', '#8b1e1e', '#ffffff']
+      });
+    }
     anime({
       targets: screenCover,
       opacity: [1, 0],
@@ -704,6 +713,13 @@ export function generateJsCode(): string {
     \`;
 
     wishesList?.prepend(item);
+    if (typeof window.confetti === 'function') {
+      window.confetti({
+        particleCount: 50,
+        spread: 60,
+        origin: { y: 0.7 }
+      });
+    }
     rsvpForm.reset();
   });
 });

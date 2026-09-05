@@ -7,7 +7,7 @@ interface NavbarProps {
   zoom: number;
   setZoom: (fn: (prev: number) => number) => void;
   resetZoom: () => void;
-  onOpenAiModal: () => void;
+  onHolverAIModal: () => void;
   onExport: () => void;
   selectedTheme: ThemePalette;
   onSelectTheme: (theme: ThemePalette) => void;
@@ -20,7 +20,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   zoom,
   setZoom,
   resetZoom,
-  onOpenAiModal,
+  onHolverAIModal,
   onExport,
   selectedTheme,
   onSelectTheme,
@@ -87,7 +87,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         <button
-          onClick={onOpenAiModal}
+          onClick={onHolverAIModal}
           className="h-8 px-3 rounded-md bg-emerald-600 hover:bg-emerald-500 active:scale-[0.98] text-white text-xs font-medium flex items-center gap-1.5 transition shadow-sm"
         >
           <Sparkles className="w-3.5 h-3.5" />

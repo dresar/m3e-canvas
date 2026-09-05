@@ -12,6 +12,10 @@ interface AIGenerateModalProps {
 
 const PRESETS = [
   {
+    title: "Adat Batak Toba",
+    prompt: "Pernikahan adat Batak Toba sakral nan megah bernuansa Gorga merah hitam emas untuk Dicky Sitohang & Agnes Silalahi di Gedung Mulia & Raja Jakarta.",
+  },
+  {
     title: "Adat Jawa",
     prompt: "Pernikahan adat Jawa klasik nan megah untuk Raden Mas Danang & Raden Ajeng Sekar Arum di Keraton Grand Ballroom Solo.",
   },
@@ -49,23 +53,38 @@ export const AIGenerateModal: React.FC<AIGenerateModalProps> = ({
       const result = await generateWeddingProject(prompt);
       
       const matchedTheme = assetsDb.themes.find((t) => t.id === (result as any).themeId) || assetsDb.themes[0];
+      const isBatak = matchedTheme.id === "adat-batak" || (result as any).themeId === "adat-batak";
+
+      const batakGallery = [
+        "/assets/adat-batak/images/29817-gallery-1676444055.jpg",
+        "/assets/adat-batak/images/29817-gallery-1676444135.jpg",
+        "/assets/adat-batak/images/29817-gallery-1676444215.jpg",
+        "/assets/adat-batak/images/29817-gallery-1676444280.jpg",
+      ];
 
       onApplyProject({
         title: result.title || "The Wedding",
         quote: result.quote,
         quoteSource: result.quoteSource,
         palette: matchedTheme as ThemePalette,
+        audioUrl: isBatak ? "/assets/adat-batak/music/tobadream-theme-song-viky-sianipar.mp3" : (matchedTheme as any).audioUrl,
+        audioTitle: isBatak ? "Viky Sianipar - Tobadream" : (matchedTheme as any).audioTitle,
+        galleryImages: isBatak ? batakGallery : (matchedTheme as any).galleryImages,
         couple: result.couple ? {
           groomName: result.couple.groomName || "",
           groomNick: result.couple.groomNick || "",
           groomParents: result.couple.groomParents || "",
           groomInstagram: result.couple.groomInstagram || "",
-          groomPhoto: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80",
+          groomPhoto: isBatak
+            ? "/assets/adat-batak/images/29817-gallery-1676444055.jpg"
+            : "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80",
           brideName: result.couple.brideName || "",
           brideNick: result.couple.brideNick || "",
           brideParents: result.couple.brideParents || "",
           brideInstagram: result.couple.brideInstagram || "",
-          bridePhoto: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80",
+          bridePhoto: isBatak
+            ? "/assets/adat-batak/images/29817-gallery-1676444135.jpg"
+            : "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80",
         } : undefined,
         event: result.event ? {
           date: result.event.date || "",
@@ -105,8 +124,9 @@ export const AIGenerateModal: React.FC<AIGenerateModalProps> = ({
             <span className="text-xs font-semibold text-white">AI Generator</span>
           </div>
           <button
+            type="button"
             onClick={onClose}
-            className="h-7 w-7 rounded flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/5 active:scale-95 transition"
+            className="h-8 w-8 rounded-md flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/5 active:scale-[0.98] transition"
           >
             <X className="w-4 h-4" />
           </button>
@@ -147,7 +167,7 @@ export const AIGenerateModal: React.FC<AIGenerateModalProps> = ({
           )}
 
           <div className="flex items-center justify-between pt-2 border-t border-white/5">
-            <span className="text-[10px] text-slate-500 font-mono">Model: gemini-3.7-flash</span>
+            <span className="text-[10px] text-slate-500 font-mono">Model: HolverAI</span>
             <div className="flex items-center gap-2">
               <button
                 type="button"

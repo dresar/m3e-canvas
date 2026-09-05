@@ -49,6 +49,18 @@
       "text": "#381a21",
       "fontHeading": "Great Vibes",
       "fontBody": "Plus Jakarta Sans"
+    },
+    {
+      "id": "theme-batak-gorga",
+      "name": "Adat Batak Toba Gorga",
+      "primary": "#8b1e1e",
+      "secondary": "#2a2a2a",
+      "accent": "#d4af37",
+      "background": "#1a1615",
+      "card": "#241e1c",
+      "text": "#f5ece4",
+      "fontHeading": "Cinzel",
+      "fontBody": "Plus Jakarta Sans"
     }
   ],
   "ornaments": [
@@ -91,6 +103,46 @@
       "recommendedAnimation": "rotate-spring",
       "width": 260,
       "height": 260
+    },
+    {
+      "id": "orn-batak-frame-tm",
+      "name": "Batak Gorga Frame Top",
+      "category": "frame",
+      "theme": "batak",
+      "url": "https://cdn.jsdelivr.net/gh/dresar/wedding-assets-cdn@main/assets/ornaments/batak-frame-tm.png",
+      "recommendedAnimation": "fade-scale-in",
+      "width": 360,
+      "height": 100
+    },
+    {
+      "id": "orn-batak-frame-bm",
+      "name": "Batak Gorga Frame Bottom",
+      "category": "frame",
+      "theme": "batak",
+      "url": "https://cdn.jsdelivr.net/gh/dresar/wedding-assets-cdn@main/assets/ornaments/batak-frame-bm.png",
+      "recommendedAnimation": "fade-scale-in",
+      "width": 360,
+      "height": 100
+    },
+    {
+      "id": "orn-batak-rumah-adat",
+      "name": "Rumah Bolon Batak",
+      "category": "illustration",
+      "theme": "batak",
+      "url": "https://cdn.jsdelivr.net/gh/dresar/wedding-assets-cdn@main/assets/ornaments/batak-rumah-adat.png",
+      "recommendedAnimation": "fade-scale-in",
+      "width": 300,
+      "height": 220
+    },
+    {
+      "id": "orn-batak-ulos",
+      "name": "Kain Ulos Pattern Divider",
+      "category": "divider",
+      "theme": "batak",
+      "url": "https://cdn.jsdelivr.net/gh/dresar/wedding-assets-cdn@main/assets/ornaments/batak-ulos.png",
+      "recommendedAnimation": "slide-expand",
+      "width": 300,
+      "height": 50
     }
   ],
   "backgrounds": [
@@ -121,6 +173,13 @@
       "theme": "dark",
       "url": "https://cdn.jsdelivr.net/gh/dresar/wedding-assets-cdn@main/assets/backgrounds/dark-emerald.jpg",
       "colorFallback": "#06221c"
+    },
+    {
+      "id": "bg-batak-gorga",
+      "name": "Batak Gorga Dark Pattern",
+      "theme": "batak",
+      "url": "https://cdn.jsdelivr.net/gh/dresar/wedding-assets-cdn@main/assets/backgrounds/batak-gorga.jpg",
+      "colorFallback": "#1a1615"
     }
   ],
   "envelopes": [
