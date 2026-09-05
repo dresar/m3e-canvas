@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import confetti from "canvas-confetti";
 import { Howl } from "howler";
-import { Copy, Check, MapPin, Calendar, Heart, Music, CheckCircle2 } from "lucide-react";
 import { WeddingProject, ScreenData } from "../types";
 
 interface PhoneScreenProps {
@@ -11,6 +10,7 @@ interface PhoneScreenProps {
   onSelect?: () => void;
   onOpenInvitation?: () => void;
   isOpenState?: boolean;
+  frameless?: boolean;
 }
 
 export const PhoneScreen: React.FC<PhoneScreenProps> = ({
@@ -19,6 +19,7 @@ export const PhoneScreen: React.FC<PhoneScreenProps> = ({
   isActive = false,
   onSelect,
   onOpenInvitation,
+  frameless = false,
 }) => {
   const { couple, event, palette, quote, quoteSource, banks, galleryImages, wishes } = project;
   const [copiedBankId, setCopiedBankId] = useState<string | null>(null);
@@ -66,7 +67,7 @@ export const PhoneScreen: React.FC<PhoneScreenProps> = ({
   };
 
   const playAudio = () => {
-    const audioSrc = (project as any).audioUrl || "/assets/adat-batak/music/tobadream-theme-song-viky-sianipar.mp3";
+    const audioSrc = project.audioUrl || "/assets/adat-batak/music/tobadream-theme-song-viky-sianipar.mp3";
     if (!soundRef.current) {
       soundRef.current = new Howl({
         src: [audioSrc],
@@ -84,7 +85,7 @@ export const PhoneScreen: React.FC<PhoneScreenProps> = ({
 
   const toggleAudio = (e: React.MouseEvent) => {
     e.stopPropagation();
-    const audioSrc = (project as any).audioUrl || "/assets/adat-batak/music/tobadream-theme-song-viky-sianipar.mp3";
+    const audioSrc = project.audioUrl || "/assets/adat-batak/music/tobadream-theme-song-viky-sianipar.mp3";
     if (!soundRef.current) {
       soundRef.current = new Howl({
         src: [audioSrc],
@@ -131,14 +132,18 @@ export const PhoneScreen: React.FC<PhoneScreenProps> = ({
   const coverEmblemSrc =
     (screen as any).coverEmblem || (project as any).coverEmblem || "/assets/adat-batak/images/ulos.webp";
 
+  const containerClasses = frameless
+    ? "relative w-full min-h-[844px] overflow-hidden flex flex-col"
+    : `relative w-[390px] h-[844px] rounded-[38px] border-[8px] border-slate-900 transition-all duration-200 overflow-hidden flex flex-col shadow-xl shrink-0 cursor-pointer ${
+        isActive
+          ? "ring-2 ring-slate-900 ring-offset-4 ring-offset-slate-100 shadow-2xl"
+          : "hover:shadow-2xl opacity-95 hover:opacity-100"
+      }`;
+
   return (
     <div
       onClick={onSelect}
-      className={`relative w-[412px] h-[892px] rounded-[36px] border-4 transition-all duration-200 overflow-hidden flex flex-col shadow-2xl shrink-0 cursor-pointer ${
-        isActive
-          ? "border-emerald-500 ring-4 ring-emerald-500/20"
-          : "border-slate-800 hover:border-slate-700"
-      }`}
+      className={containerClasses}
       style={{
         backgroundColor: palette.background,
         color: palette.text,
@@ -177,17 +182,18 @@ export const PhoneScreen: React.FC<PhoneScreenProps> = ({
         />
       </div>
 
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-36 h-6 bg-slate-900 rounded-b-2xl z-40 flex items-center justify-center">
-        <div className="w-3 h-3 rounded-full bg-slate-950 mr-2"></div>
-        <div className="w-10 h-1.5 rounded-full bg-slate-800"></div>
-      </div>
+      {!frameless && (
+        <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-28 h-5 bg-slate-950 rounded-full z-40 flex items-center justify-between px-3 pointer-events-none">
+          <div className="w-2.5 h-2.5 rounded-full bg-slate-900 border border-slate-800" />
+          <div className="w-2 h-2 rounded-full bg-slate-900" />
+        </div>
+      )}
 
       {showRsvpToast && (
-        <div className="absolute top-12 left-5 right-5 z-50 bg-slate-900/95 text-white px-4 py-3 rounded-lg shadow-2xl border border-emerald-500/40 flex items-center gap-3 animate-in fade-in slide-in-from-top-3 duration-200">
-          <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+        <div className="absolute top-12 left-5 right-5 z-50 bg-slate-900 text-white px-3.5 py-2.5 rounded-lg shadow-xl border border-slate-800 flex items-center gap-2.5">
           <div className="text-left flex-1">
-            <p className="text-xs font-semibold text-emerald-300">Konfirmasi Terkirim!</p>
-            <p className="text-[11px] text-slate-300">Terima kasih atas doa & konfirmasinya.</p>
+            <p className="text-xs font-semibold text-emerald-300 leading-tight">✓ Terkirim!</p>
+            <p className="text-[11px] text-slate-300 leading-tight">Konfirmasi kehadiran berhasil disimpan.</p>
           </div>
         </div>
       )}
@@ -199,7 +205,7 @@ export const PhoneScreen: React.FC<PhoneScreenProps> = ({
               <img
                 src={coverEmblemSrc}
                 alt="Emblem"
-                className="max-w-full max-h-full object-contain filter drop-shadow-sm"
+                className="max-w-full max-h-full object-contain filter drop-shadow-xs"
                 onError={(e) => {
                   (e.currentTarget as HTMLElement).style.display = "none";
                 }}
@@ -207,31 +213,31 @@ export const PhoneScreen: React.FC<PhoneScreenProps> = ({
             </div>
 
             <div
-              className="w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-base shadow-md mb-4"
+              className="w-12 h-12 rounded-lg flex items-center justify-center text-white font-bold text-sm shadow-xs mb-3"
               style={{ backgroundColor: palette.accent }}
             >
               {couple.groomNick[0]}&{couple.brideNick[0]}
             </div>
 
-            <p className="text-[11px] uppercase tracking-[3px] font-medium mb-2" style={{ color: palette.secondary }}>
+            <p className="text-[10px] uppercase tracking-[3px] font-semibold mb-2" style={{ color: palette.secondary }}>
               The Wedding Of
             </p>
 
             <h2
-              className="text-3xl font-bold tracking-tight mb-6"
+              className="text-2xl sm:text-3xl font-bold tracking-tight mb-5"
               style={{ fontFamily: palette.fontHeading, color: palette.primary }}
             >
               {couple.groomNick} & {couple.brideNick}
             </h2>
 
             <div
-              className="w-full max-w-xs rounded-lg p-4 mb-6 border border-dashed"
-              style={{ borderColor: palette.secondary, backgroundColor: "rgba(255, 255, 255, 0.5)" }}
+              className="w-full max-w-xs rounded-lg p-3.5 mb-5 border border-dashed"
+              style={{ borderColor: palette.secondary, backgroundColor: "rgba(255, 255, 255, 0.65)" }}
             >
-              <p className="text-xs mb-1 font-medium" style={{ color: palette.secondary }}>
+              <p className="text-[11px] mb-0.5 font-medium" style={{ color: palette.secondary }}>
                 Kepada Yth:
               </p>
-              <h3 className="text-base font-semibold" style={{ color: palette.text }}>
+              <h3 className="text-sm font-semibold" style={{ color: palette.text }}>
                 {project.guestName || "Tamu Undangan"}
               </h3>
             </div>
@@ -244,10 +250,9 @@ export const PhoneScreen: React.FC<PhoneScreenProps> = ({
                 playAudio();
                 if (onOpenInvitation) onOpenInvitation();
               }}
-              className="h-10 px-6 rounded-md text-white text-xs font-semibold tracking-wide shadow-md active:scale-[0.98] transition flex items-center gap-2 cursor-pointer"
+              className="h-9 px-5 rounded-lg text-white text-xs font-semibold tracking-wide shadow-xs active:scale-[0.98] transition flex items-center gap-2 cursor-pointer"
               style={{ backgroundColor: palette.primary }}
             >
-              <Heart className="w-3.5 h-3.5 fill-current" />
               <span>Buka Undangan</span>
             </button>
           </div>
@@ -255,65 +260,65 @@ export const PhoneScreen: React.FC<PhoneScreenProps> = ({
 
         {screen.type === "quote" && (
           <div className="flex-1 flex flex-col items-center justify-center w-full my-auto px-2">
-            <div className="w-12 h-1 rounded-full mb-8 opacity-40" style={{ backgroundColor: palette.accent }} />
-            <p className="text-sm italic leading-relaxed mb-4 font-serif" style={{ color: palette.text }}>
+            <div className="w-10 h-1 rounded-full mb-6 opacity-40" style={{ backgroundColor: palette.accent }} />
+            <p className="text-xs sm:text-sm italic leading-relaxed mb-3 font-serif" style={{ color: palette.text }}>
               "{quote}"
             </p>
-            <span className="text-xs font-semibold tracking-wider uppercase" style={{ color: palette.accent }}>
+            <span className="text-[11px] font-semibold tracking-wider uppercase" style={{ color: palette.accent }}>
               — {quoteSource}
             </span>
-            <div className="w-12 h-1 rounded-full mt-8 opacity-40" style={{ backgroundColor: palette.accent }} />
+            <div className="w-10 h-1 rounded-full mt-6 opacity-40" style={{ backgroundColor: palette.accent }} />
           </div>
         )}
 
         {screen.type === "profile" && (
           <div className="flex-1 flex flex-col items-center justify-center w-full my-auto">
             <h3
-              className="text-2xl font-bold mb-6"
+              className="text-xl font-bold mb-4"
               style={{ fontFamily: palette.fontHeading, color: palette.primary }}
             >
               Mempelai
             </h3>
 
-            <div className="mb-4 flex flex-col items-center">
+            <div className="mb-3 flex flex-col items-center">
               <div
-                className="w-24 h-24 rounded-full overflow-hidden border-2 mb-3 shadow-md"
+                className="w-20 h-20 rounded-xl overflow-hidden border-2 mb-2 shadow-xs"
                 style={{ borderColor: palette.accent }}
               >
                 <img src={couple.groomPhoto} alt={couple.groomName} className="w-full h-full object-cover" />
               </div>
-              <h4 className="text-lg font-bold" style={{ fontFamily: palette.fontHeading, color: palette.primary }}>
+              <h4 className="text-base font-bold" style={{ fontFamily: palette.fontHeading, color: palette.primary }}>
                 {couple.groomName}
               </h4>
-              <p className="text-xs max-w-xs mt-1" style={{ color: palette.secondary }}>
+              <p className="text-[11px] max-w-xs mt-0.5" style={{ color: palette.secondary }}>
                 {couple.groomParents}
               </p>
               {couple.groomInstagram && (
-                <span className="text-[11px] mt-1 font-mono font-medium" style={{ color: palette.accent }}>
+                <span className="text-[10px] mt-0.5 font-mono font-medium" style={{ color: palette.accent }}>
                   {couple.groomInstagram}
                 </span>
               )}
             </div>
 
-            <div className="text-xl font-bold my-2 font-serif" style={{ color: palette.accent }}>
+            <div className="text-lg font-bold my-1 font-serif" style={{ color: palette.accent }}>
               &
             </div>
 
             <div className="flex flex-col items-center">
               <div
-                className="w-24 h-24 rounded-full overflow-hidden border-2 mb-3 shadow-md"
+                className="w-20 h-20 rounded-xl overflow-hidden border-2 mb-2 shadow-xs"
                 style={{ borderColor: palette.accent }}
               >
                 <img src={couple.bridePhoto} alt={couple.brideName} className="w-full h-full object-cover" />
               </div>
-              <h4 className="text-lg font-bold" style={{ fontFamily: palette.fontHeading, color: palette.primary }}>
+              <h4 className="text-base font-bold" style={{ fontFamily: palette.fontHeading, color: palette.primary }}>
                 {couple.brideName}
               </h4>
-              <p className="text-xs max-w-xs mt-1" style={{ color: palette.secondary }}>
+              <p className="text-[11px] max-w-xs mt-0.5" style={{ color: palette.secondary }}>
                 {couple.brideParents}
               </p>
               {couple.brideInstagram && (
-                <span className="text-[11px] mt-1 font-mono font-medium" style={{ color: palette.accent }}>
+                <span className="text-[10px] mt-0.5 font-mono font-medium" style={{ color: palette.accent }}>
                   {couple.brideInstagram}
                 </span>
               )}
@@ -324,13 +329,13 @@ export const PhoneScreen: React.FC<PhoneScreenProps> = ({
         {screen.type === "countdown" && (
           <div className="flex-1 flex flex-col items-center justify-center w-full my-auto">
             <h3
-              className="text-2xl font-bold mb-6"
+              className="text-xl font-bold mb-4"
               style={{ fontFamily: palette.fontHeading, color: palette.primary }}
             >
               Waktu & Tempat
             </h3>
 
-            <div className="grid grid-cols-4 gap-2 w-full max-w-xs mb-6">
+            <div className="grid grid-cols-4 gap-1.5 w-full max-w-xs mb-5">
               {[
                 { val: timeLeft.days, label: "Hari" },
                 { val: timeLeft.hours, label: "Jam" },
@@ -339,58 +344,52 @@ export const PhoneScreen: React.FC<PhoneScreenProps> = ({
               ].map((item, i) => (
                 <div
                   key={i}
-                  className="rounded-lg p-2.5 border bg-white/60 backdrop-blur-sm shadow-xs"
-                  style={{ borderColor: "rgba(0, 0, 0, 0.06)" }}
+                  className="rounded-lg p-2 border bg-white/70 backdrop-blur-xs shadow-2xs"
+                  style={{ borderColor: "rgba(0, 0, 0, 0.08)" }}
                 >
-                  <span className="text-xl font-bold block" style={{ color: palette.primary }}>
+                  <span className="text-base font-bold block" style={{ color: palette.primary }}>
                     {String(item.val).padStart(2, "0")}
                   </span>
-                  <span className="text-[10px] uppercase font-semibold tracking-wider" style={{ color: palette.secondary }}>
+                  <span className="text-[9px] uppercase font-semibold tracking-wider" style={{ color: palette.secondary }}>
                     {item.label}
                   </span>
                 </div>
               ))}
             </div>
 
-            <div className="w-full max-w-xs space-y-3 text-left">
+            <div className="w-full max-w-xs space-y-2.5 text-left">
               <div
-                className="rounded-lg p-4 border bg-white/60 shadow-xs"
-                style={{ borderColor: "rgba(0, 0, 0, 0.06)" }}
+                className="rounded-lg p-3 border bg-white/70 shadow-2xs"
+                style={{ borderColor: "rgba(0, 0, 0, 0.08)" }}
               >
-                <div className="flex items-center gap-2 mb-1">
-                  <Calendar className="w-4 h-4" style={{ color: palette.accent }} />
-                  <h4 className="text-sm font-bold" style={{ color: palette.primary }}>
-                    {event.akadTitle}
-                  </h4>
-                </div>
-                <p className="text-xs font-semibold mb-1" style={{ color: palette.accent }}>
+                <h4 className="text-xs font-bold mb-1" style={{ color: palette.primary }}>
+                  {event.akadTitle}
+                </h4>
+                <p className="text-[11px] font-semibold mb-0.5" style={{ color: palette.accent }}>
                   {event.akadTime}
                 </p>
-                <p className="text-xs font-medium" style={{ color: palette.text }}>
+                <p className="text-[11px] font-medium" style={{ color: palette.text }}>
                   {event.akadVenue}
                 </p>
-                <p className="text-[11px] mt-0.5" style={{ color: palette.secondary }}>
+                <p className="text-[10px] mt-0.5" style={{ color: palette.secondary }}>
                   {event.akadAddress}
                 </p>
               </div>
 
               <div
-                className="rounded-lg p-4 border bg-white/60 shadow-xs"
-                style={{ borderColor: "rgba(0, 0, 0, 0.06)" }}
+                className="rounded-lg p-3 border bg-white/70 shadow-2xs"
+                style={{ borderColor: "rgba(0, 0, 0, 0.08)" }}
               >
-                <div className="flex items-center gap-2 mb-1">
-                  <Calendar className="w-4 h-4" style={{ color: palette.accent }} />
-                  <h4 className="text-sm font-bold" style={{ color: palette.primary }}>
-                    {event.resepsiTitle}
-                  </h4>
-                </div>
-                <p className="text-xs font-semibold mb-1" style={{ color: palette.accent }}>
+                <h4 className="text-xs font-bold mb-1" style={{ color: palette.primary }}>
+                  {event.resepsiTitle}
+                </h4>
+                <p className="text-[11px] font-semibold mb-0.5" style={{ color: palette.accent }}>
                   {event.resepsiTime}
                 </p>
-                <p className="text-xs font-medium" style={{ color: palette.text }}>
+                <p className="text-[11px] font-medium" style={{ color: palette.text }}>
                   {event.resepsiVenue}
                 </p>
-                <p className="text-[11px] mt-0.5" style={{ color: palette.secondary }}>
+                <p className="text-[10px] mt-0.5" style={{ color: palette.secondary }}>
                   {event.resepsiAddress}
                 </p>
               </div>
@@ -401,38 +400,32 @@ export const PhoneScreen: React.FC<PhoneScreenProps> = ({
         {screen.type === "location" && (
           <div className="flex-1 flex flex-col items-center justify-center w-full my-auto">
             <h3
-              className="text-2xl font-bold mb-4"
+              className="text-xl font-bold mb-3"
               style={{ fontFamily: palette.fontHeading, color: palette.primary }}
             >
               Lokasi Acara
             </h3>
 
             <div
-              className="w-full max-w-xs rounded-xl border p-5 bg-white/60 shadow-xs mb-6 text-left"
-              style={{ borderColor: "rgba(0, 0, 0, 0.06)" }}
+              className="w-full max-w-xs rounded-lg border p-4 bg-white/70 shadow-2xs mb-5 text-left"
+              style={{ borderColor: "rgba(0, 0, 0, 0.08)" }}
             >
-              <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 shrink-0 mt-0.5" style={{ color: palette.accent }} />
-                <div>
-                  <h4 className="text-sm font-bold mb-1" style={{ color: palette.primary }}>
-                    {event.resepsiVenue}
-                  </h4>
-                  <p className="text-xs leading-relaxed" style={{ color: palette.secondary }}>
-                    {event.resepsiAddress}
-                  </p>
-                </div>
-              </div>
+              <h4 className="text-xs font-bold mb-1" style={{ color: palette.primary }}>
+                {event.resepsiVenue}
+              </h4>
+              <p className="text-[11px] leading-relaxed" style={{ color: palette.secondary }}>
+                {event.resepsiAddress}
+              </p>
             </div>
 
             <a
               href={event.mapsUrl}
               target="_blank"
               rel="noreferrer"
-              className="h-10 px-6 rounded-md text-white text-xs font-semibold tracking-wide shadow-md active:scale-[0.98] transition flex items-center gap-2 cursor-pointer"
+              className="h-9 px-5 rounded-lg text-white text-xs font-semibold tracking-wide shadow-xs active:scale-[0.98] transition flex items-center justify-center cursor-pointer"
               style={{ backgroundColor: palette.primary }}
             >
-              <MapPin className="w-3.5 h-3.5" />
-              <span>Buka Maps</span>
+              <span>Buka Google Maps</span>
             </a>
           </div>
         )}
@@ -440,17 +433,17 @@ export const PhoneScreen: React.FC<PhoneScreenProps> = ({
         {screen.type === "gallery" && (
           <div className="flex-1 flex flex-col items-center justify-center w-full my-auto">
             <h3
-              className="text-2xl font-bold mb-6"
+              className="text-xl font-bold mb-4"
               style={{ fontFamily: palette.fontHeading, color: palette.primary }}
             >
               Galeri Foto
             </h3>
 
-            <div className="grid grid-cols-2 gap-2.5 w-full max-w-xs">
+            <div className="grid grid-cols-2 gap-2 w-full max-w-xs">
               {galleryImages.map((img, i) => (
                 <div
                   key={i}
-                  className="rounded-lg overflow-hidden h-36 border shadow-xs hover:scale-[1.02] transition"
+                  className="rounded-lg overflow-hidden h-32 border shadow-2xs hover:scale-[1.02] transition"
                   style={{ borderColor: "rgba(0, 0, 0, 0.08)" }}
                 >
                   <img src={img} alt="Gallery" className="w-full h-full object-cover" />
@@ -463,30 +456,30 @@ export const PhoneScreen: React.FC<PhoneScreenProps> = ({
         {screen.type === "gift" && (
           <div className="flex-1 flex flex-col items-center justify-center w-full my-auto">
             <h3
-              className="text-2xl font-bold mb-2"
+              className="text-xl font-bold mb-1"
               style={{ fontFamily: palette.fontHeading, color: palette.primary }}
             >
               Tanda Kasih
             </h3>
-            <p className="text-xs max-w-xs mb-6 leading-relaxed" style={{ color: palette.secondary }}>
+            <p className="text-[11px] max-w-xs mb-4 leading-relaxed" style={{ color: palette.secondary }}>
               Doa restu Anda merupakan karunia terindah bagi kami. Bagi yang ingin memberikan tanda kasih:
             </p>
 
-            <div className="w-full max-w-xs space-y-3">
+            <div className="w-full max-w-xs space-y-2.5">
               {banks.map((b) => (
                 <div
                   key={b.id}
-                  className="rounded-lg p-3.5 border bg-white/70 shadow-xs flex items-center justify-between text-left"
-                  style={{ borderColor: "rgba(0, 0, 0, 0.06)" }}
+                  className="rounded-lg p-3 border bg-white/75 shadow-2xs flex items-center justify-between text-left"
+                  style={{ borderColor: "rgba(0, 0, 0, 0.08)" }}
                 >
                   <div>
-                    <span className="text-xs font-bold block" style={{ color: palette.primary }}>
+                    <span className="text-[11px] font-bold block" style={{ color: palette.primary }}>
                       {b.bankName}
                     </span>
-                    <span className="text-sm font-semibold tracking-wider block font-mono" style={{ color: palette.text }}>
+                    <span className="text-xs font-semibold tracking-wider block font-mono" style={{ color: palette.text }}>
                       {b.accountNumber}
                     </span>
-                    <span className="text-[11px] block mt-0.5" style={{ color: palette.secondary }}>
+                    <span className="text-[10px] block mt-0.5" style={{ color: palette.secondary }}>
                       a.n {b.holderName}
                     </span>
                   </div>
@@ -497,24 +490,14 @@ export const PhoneScreen: React.FC<PhoneScreenProps> = ({
                       e.stopPropagation();
                       handleCopy(b.id, b.accountNumber);
                     }}
-                    className="h-9 px-3 rounded-md border text-[11px] font-semibold flex items-center gap-1 active:scale-[0.98] transition cursor-pointer"
+                    className="h-8 px-2.5 rounded-md border text-[11px] font-semibold flex items-center justify-center active:scale-[0.98] transition cursor-pointer"
                     style={{
                       borderColor: palette.primary,
                       color: palette.primary,
                       backgroundColor: copiedBankId === b.id ? "rgba(45, 90, 70, 0.1)" : "transparent",
                     }}
                   >
-                    {copiedBankId === b.id ? (
-                      <>
-                        <Check className="w-3 h-3" />
-                        <span>Tersalin!</span>
-                      </>
-                    ) : (
-                      <>
-                        <Copy className="w-3 h-3" />
-                        <span>Salin</span>
-                      </>
-                    )}
+                    <span>{copiedBankId === b.id ? "Disalin!" : "Salin"}</span>
                   </button>
                 </div>
               ))}
@@ -525,27 +508,27 @@ export const PhoneScreen: React.FC<PhoneScreenProps> = ({
         {screen.type === "rsvp" && (
           <div className="flex-1 flex flex-col items-center justify-center w-full my-auto">
             <h3
-              className="text-2xl font-bold mb-4"
+              className="text-xl font-bold mb-3"
               style={{ fontFamily: palette.fontHeading, color: palette.primary }}
             >
               Konfirmasi Hadir
             </h3>
 
-            <form onSubmit={handleRsvpSubmit} className="w-full max-w-xs space-y-2 mb-4 text-left">
+            <form onSubmit={handleRsvpSubmit} className="w-full max-w-xs space-y-2 mb-3 text-left">
               <input
                 type="text"
                 required
                 value={rsvpName}
                 onChange={(e) => setRsvpName(e.target.value)}
-                placeholder="Nama Anda"
-                className="w-full h-9 px-3 rounded-md border text-xs bg-white/70 outline-none"
-                style={{ borderColor: "rgba(0, 0, 0, 0.1)", color: palette.text }}
+                placeholder="Nama Lengkap"
+                className="w-full h-8 px-2.5 rounded-lg border text-xs bg-white/80 outline-none"
+                style={{ borderColor: "rgba(0, 0, 0, 0.12)", color: palette.text }}
               />
               <select
                 value={rsvpStatus}
                 onChange={(e) => setRsvpStatus(e.target.value)}
-                className="w-full h-9 px-2 rounded-md border text-xs bg-white/70 outline-none cursor-pointer"
-                style={{ borderColor: "rgba(0, 0, 0, 0.1)", color: palette.text }}
+                className="w-full h-8 px-2 rounded-lg border text-xs bg-white/80 outline-none cursor-pointer"
+                style={{ borderColor: "rgba(0, 0, 0, 0.12)", color: palette.text }}
               >
                 <option value="Hadir">Hadir</option>
                 <option value="Tidak Hadir">Tidak Hadir</option>
@@ -557,35 +540,34 @@ export const PhoneScreen: React.FC<PhoneScreenProps> = ({
                 onChange={(e) => setRsvpMessage(e.target.value)}
                 placeholder="Ucapan & Doa Restu"
                 rows={2}
-                className="w-full p-2.5 rounded-md border text-xs bg-white/70 outline-none resize-none"
-                style={{ borderColor: "rgba(0, 0, 0, 0.1)", color: palette.text }}
+                className="w-full p-2 rounded-lg border text-xs bg-white/80 outline-none resize-none"
+                style={{ borderColor: "rgba(0, 0, 0, 0.12)", color: palette.text }}
               />
               <button
                 type="submit"
-                className="w-full h-9 rounded-md text-white text-xs font-semibold tracking-wide shadow-sm active:scale-[0.98] transition cursor-pointer flex items-center justify-center gap-1.5"
+                className="w-full h-8 rounded-lg text-white text-xs font-semibold tracking-wide shadow-xs active:scale-[0.98] transition cursor-pointer flex items-center justify-center"
                 style={{ backgroundColor: palette.primary }}
               >
-                <CheckCircle2 className="w-3.5 h-3.5" />
-                <span>Kirim</span>
+                <span>Kirim Ucapan</span>
               </button>
             </form>
 
-            <div className="w-full max-w-xs max-h-32 overflow-y-auto space-y-2 text-left pr-1">
+            <div className="w-full max-w-xs max-h-28 overflow-y-auto space-y-1.5 text-left pr-1">
               {wishes.slice(0, 3).map((w) => (
                 <div
                   key={w.id}
-                  className="rounded-md p-2.5 border bg-white/50 text-xs"
-                  style={{ borderColor: "rgba(0, 0, 0, 0.05)" }}
+                  className="rounded-md p-2 border bg-white/60 text-xs shadow-2xs"
+                  style={{ borderColor: "rgba(0, 0, 0, 0.08)" }}
                 >
-                  <div className="flex justify-between items-center mb-1">
-                    <span className="font-bold text-[11px]" style={{ color: palette.primary }}>
+                  <div className="flex justify-between items-center mb-0.5">
+                    <span className="font-bold text-[10px]" style={{ color: palette.primary }}>
                       {w.sender}
                     </span>
-                    <span className="text-[9px] px-1.5 py-0.5 rounded font-medium bg-emerald-600/10 text-emerald-700">
+                    <span className="text-[9px] px-1 py-0.2 rounded font-medium bg-emerald-600/10 text-emerald-800">
                       {w.attendance}
                     </span>
                   </div>
-                  <p className="text-[11px] leading-tight" style={{ color: palette.text }}>
+                  <p className="text-[10px] leading-tight" style={{ color: palette.text }}>
                     {w.message}
                   </p>
                 </div>
@@ -594,34 +576,22 @@ export const PhoneScreen: React.FC<PhoneScreenProps> = ({
           </div>
         )}
 
-        <div className="pt-4 flex items-center justify-between w-full border-t border-black/5 text-[10px] text-slate-400">
+        <div className="pt-3 flex items-center justify-between w-full border-t border-black/5 text-[10px] text-slate-500">
           <span>{screen.title}</span>
-          <span>412 x 892 px</span>
+          <span>390 x 844 px</span>
         </div>
       </div>
 
       <button
         type="button"
         onClick={toggleAudio}
-        className="absolute bottom-4 right-4 z-30 w-10 h-10 rounded-full border flex items-center justify-center shadow-lg bg-slate-900/90 hover:bg-slate-800 transition active:scale-95 cursor-pointer"
-        style={{ borderColor: palette.accent }}
-        title={isPlaying ? "Matikan Musik" : "Putar Musik"}
+        className="absolute bottom-4 right-4 z-30 h-8 px-2.5 rounded-lg border border-amber-400/50 flex items-center justify-center gap-1.5 shadow-md bg-slate-900/90 hover:bg-slate-900 text-amber-300 text-[11px] font-medium transition active:scale-[0.98] cursor-pointer"
+        title={isPlaying ? "Jeda Musik" : "Putar Musik"}
       >
         <div
-          className={`w-7 h-7 rounded-full border border-amber-400/50 flex items-center justify-center ${
-            isPlaying ? "animate-spin" : ""
-          }`}
-          style={{ animationDuration: "3s" }}
-        >
-          <div className="w-2.5 h-2.5 rounded-full flex items-center justify-center" style={{ backgroundColor: palette.accent }}>
-            <div className="w-1 h-1 rounded-full bg-slate-900" />
-          </div>
-        </div>
-        {isPlaying && (
-          <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5 items-center justify-center">
-            <Music className="w-3 h-3 text-amber-300 animate-pulse" />
-          </span>
-        )}
+          className={`w-2.5 h-2.5 rounded-full ${isPlaying ? "bg-amber-400 animate-ping" : "bg-slate-400"}`}
+        />
+        <span>{isPlaying ? "Musik Aktif" : "Musik"}</span>
       </button>
     </div>
   );

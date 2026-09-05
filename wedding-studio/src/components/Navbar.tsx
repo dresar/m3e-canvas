@@ -1,5 +1,4 @@
 import React from "react";
-import { Sparkles, Download, ZoomIn, ZoomOut, Maximize2, Palette, Eye, Settings2 } from "lucide-react";
 import assetsDb from "../data/assets_database.json";
 import { ThemePalette } from "../types";
 
@@ -16,6 +15,9 @@ interface NavbarProps {
   onToggleInspector: () => void;
 }
 
+const COOKIE_PATH = "M56.3679 6.02002C57.1442 5.3783 57.5324 5.05744 57.8867 4.78656C66.2354 -1.59552 77.7646 -1.59552 86.1133 4.78656C86.4676 5.05744 86.8558 5.3783 87.6321 6.02002C87.9786 6.30648 88.1519 6.44971 88.3233 6.58606C92.2522 9.71203 97.0693 11.4835 102.068 11.6405C102.286 11.6473 102.51 11.6501 102.957 11.6558C103.96 11.6684 104.462 11.6747 104.906 11.6973C115.361 12.2303 124.193 19.7179 126.528 30.0289C126.627 30.4666 126.721 30.9644 126.907 31.9602C126.99 32.4047 127.032 32.627 127.076 32.8427C128.097 37.789 130.661 42.2744 134.39 45.6409C134.552 45.7878 134.722 45.9353 135.062 46.2304C135.822 46.8914 136.202 47.2219 136.528 47.5275C144.198 54.7262 146.2 66.1979 141.429 75.6132C141.227 76.0128 140.981 76.4547 140.49 77.3386C140.271 77.7332 140.162 77.9304 140.059 78.1246C137.694 82.5768 136.804 87.6775 137.519 92.6782C137.55 92.8964 137.586 93.1196 137.658 93.5661C137.82 94.5662 137.901 95.0663 137.956 95.5117C139.252 106.008 133.488 116.096 123.843 120.21C123.434 120.385 122.965 120.564 122.026 120.922C121.608 121.082 121.398 121.162 121.196 121.244C116.552 123.119 112.625 126.448 109.991 130.743C109.876 130.93 109.762 131.125 109.533 131.514C109.021 132.385 108.765 132.821 108.523 133.198C102.839 142.08 92.0048 146.064 81.9992 142.952C81.5745 142.82 81.1011 142.652 80.1544 142.318C79.7318 142.168 79.5205 142.094 79.3133 142.025C74.5631 140.445 69.4369 140.445 64.6867 142.025C64.4795 142.094 64.2682 142.168 63.8456 142.318C62.8989 142.652 62.4255 142.82 62.0008 142.952C51.9952 146.064 41.1613 142.08 35.4766 133.198C35.2353 132.821 34.9791 132.385 34.4669 131.514C34.2382 131.125 34.1239 130.93 34.009 130.743C31.3752 126.448 27.4482 123.119 22.8044 121.244C22.6018 121.162 22.3924 121.082 21.9736 120.922C21.0354 120.564 20.5663 120.385 20.1569 120.21C10.5122 116.096 4.74763 106.008 6.04367 95.5117C6.09868 95.0663 6.17963 94.5662 6.34151 93.5661C6.41377 93.1196 6.4499 92.8964 6.48109 92.6783C7.19603 87.6775 6.30587 82.5768 3.94121 78.1246C3.83807 77.9304 3.72855 77.7332 3.50951 77.3386C3.01883 76.4547 2.77349 76.0128 2.57099 75.6132C-2.19995 66.1979 -0.197931 54.7262 7.47248 47.5275C7.79804 47.2219 8.17819 46.8914 8.93848 46.2304C9.27787 45.9353 9.44757 45.7878 9.61023 45.6409C13.3394 42.2744 15.9025 37.789 16.9235 32.8427C16.9681 32.627 17.0097 32.4047 17.0929 31.9602C17.2793 30.9644 17.3725 30.4666 17.4717 30.0289C19.8069 19.7179 28.6387 12.2303 39.0944 11.6973C39.5382 11.6747 40.0397 11.6684 41.0426 11.6558C41.4903 11.6501 41.7142 11.6473 41.9322 11.6405C46.9307 11.4835 51.7478 9.71203 55.6767 6.58606C55.8481 6.44971 56.0214 6.30648 56.3679 6.02002Z";
+const LAYERS_PATH = "M32 14 16 24l16 10 16-10-16-10zm-11.6 15.4L16 32l16 10 16-10-4.4-2.6L32 36.6l-11.6-7.2zm0 8L16 40l16 10 16-10-4.4-2.6L32 44.6l-11.6-7.2z";
+
 export const Navbar: React.FC<NavbarProps> = ({
   zoom,
   setZoom,
@@ -29,57 +31,65 @@ export const Navbar: React.FC<NavbarProps> = ({
   onToggleInspector,
 }) => {
   return (
-    <header className="h-14 border-b border-white/10 bg-slate-900/90 backdrop-blur-md px-4 flex items-center justify-between z-50 shrink-0">
-      <div className="flex items-center gap-3">
-        <div className="w-8 h-8 rounded-lg bg-emerald-700/80 border border-emerald-500/30 flex items-center justify-center font-bold text-emerald-300 text-sm">
-          WS
+    <header className="h-13 min-h-[52px] border-b border-slate-200/90 bg-white/95 backdrop-blur-md px-3 sm:px-4 flex items-center justify-between z-50 shrink-0 select-none">
+      <div className="flex items-center gap-2.5 shrink-0">
+        <div className="w-8 h-8 rounded-lg bg-slate-900 flex items-center justify-center shadow-2xs">
+          <svg width={22} height={22} viewBox="0 0 144 144" aria-hidden="true" className="block">
+            <path fill="#3b82f6" d={COOKIE_PATH} />
+            <path fill="#ffffff" transform="translate(72 74) scale(1.35) translate(-32 -32)" d={LAYERS_PATH} />
+          </svg>
         </div>
-        <div>
-          <h1 className="text-sm font-semibold text-white tracking-tight">Wedding Studio</h1>
-          <p className="text-[10px] text-slate-400">AI Canvas Editor</p>
+        <div className="hidden xs:block">
+          <div className="flex items-center gap-1.5">
+            <h1 className="text-xs font-semibold text-slate-900 tracking-tight leading-tight">Wedding Studio</h1>
+            <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-100 text-slate-600 font-medium border border-slate-200/80">M3E</span>
+          </div>
+          <p className="text-[10px] text-slate-500 leading-none">Canvas Editor</p>
         </div>
       </div>
 
-      <div className="flex items-center gap-2">
-        <div className="flex items-center bg-slate-800/80 border border-white/10 rounded-md p-0.5">
+      <div className="flex items-center gap-1.5 sm:gap-2">
+        <div className="hidden md:flex items-center bg-slate-100/90 border border-slate-200/90 rounded-lg p-0.5 shadow-2xs">
           <button
+            type="button"
             onClick={() => setZoom((z) => Math.max(0.3, +(z - 0.1).toFixed(1)))}
-            className="h-7 w-7 flex items-center justify-center text-slate-400 hover:text-white rounded hover:bg-white/5 active:scale-95 transition"
+            className="h-7 w-7 flex items-center justify-center text-slate-700 hover:text-slate-900 rounded-md hover:bg-white active:scale-[0.98] transition cursor-pointer text-sm font-semibold"
             title="Perkecil"
           >
-            <ZoomOut className="w-3.5 h-3.5" />
+            -
           </button>
-          <span className="text-[11px] font-mono px-2 text-slate-300 min-w-[42px] text-center">
+          <span className="text-[11px] font-mono px-2 text-slate-800 min-w-[44px] text-center font-semibold select-none">
             {Math.round(zoom * 100)}%
           </span>
           <button
+            type="button"
             onClick={() => setZoom((z) => Math.min(1.8, +(z + 0.1).toFixed(1)))}
-            className="h-7 w-7 flex items-center justify-center text-slate-400 hover:text-white rounded hover:bg-white/5 active:scale-95 transition"
+            className="h-7 w-7 flex items-center justify-center text-slate-700 hover:text-slate-900 rounded-md hover:bg-white active:scale-[0.98] transition cursor-pointer text-sm font-semibold"
             title="Perbesar"
           >
-            <ZoomIn className="w-3.5 h-3.5" />
+            +
           </button>
           <button
+            type="button"
             onClick={resetZoom}
-            className="h-7 w-7 flex items-center justify-center text-slate-400 hover:text-white rounded hover:bg-white/5 active:scale-95 transition border-l border-white/10"
-            title="Reset"
+            className="h-7 px-2 flex items-center justify-center text-slate-700 hover:text-slate-900 rounded-md hover:bg-white active:scale-[0.98] transition border-l border-slate-200/80 text-[11px] font-medium cursor-pointer"
+            title="Ukuran Asli"
           >
-            <Maximize2 className="w-3 h-3" />
+            Fit
           </button>
         </div>
 
-        <div className="relative flex items-center">
-          <Palette className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 pointer-events-none" />
+        <div className="hidden sm:flex items-center">
           <select
             value={selectedTheme.id}
             onChange={(e) => {
               const theme = assetsDb.themes.find((t) => t.id === e.target.value);
               if (theme) onSelectTheme(theme as ThemePalette);
             }}
-            className="h-8 pl-8 pr-3 bg-slate-800/80 border border-white/10 rounded-md text-xs text-slate-200 outline-none hover:border-white/20 focus:border-emerald-500 cursor-pointer transition"
+            className="h-8 px-2.5 bg-white border border-slate-200/90 rounded-lg text-xs font-medium text-slate-800 outline-none hover:border-slate-300 focus:border-slate-900 cursor-pointer transition shadow-2xs"
           >
             {assetsDb.themes.map((t) => (
-              <option key={t.id} value={t.id} className="bg-slate-900 text-slate-200">
+              <option key={t.id} value={t.id} className="bg-white text-slate-900">
                 {t.name}
               </option>
             ))}
@@ -87,39 +97,39 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         <button
+          type="button"
           onClick={onHolverAIModal}
-          className="h-8 px-3 rounded-md bg-emerald-600 hover:bg-emerald-500 active:scale-[0.98] text-white text-xs font-medium flex items-center gap-1.5 transition shadow-sm"
+          className="h-8 px-2.5 sm:px-3 rounded-lg bg-slate-900 hover:bg-slate-800 active:scale-[0.98] text-white text-xs font-semibold flex items-center justify-center transition shadow-2xs cursor-pointer"
         >
-          <Sparkles className="w-3.5 h-3.5" />
           <span>AI Generate</span>
         </button>
 
         <button
+          type="button"
           onClick={onTogglePreview}
-          className={`h-8 px-3 rounded-md border text-xs font-medium flex items-center gap-1.5 transition active:scale-[0.98] ${
+          className={`h-8 px-2.5 sm:px-3 rounded-lg border text-xs font-semibold flex items-center justify-center transition active:scale-[0.98] cursor-pointer shadow-2xs ${
             isPreview
-              ? "bg-amber-500/20 border-amber-500/40 text-amber-300"
-              : "bg-slate-800/80 border-white/10 text-slate-300 hover:bg-white/5"
+              ? "bg-amber-50 border-amber-300 text-amber-900 font-bold"
+              : "bg-white border-slate-200/90 text-slate-800 hover:bg-slate-50"
           }`}
         >
-          <Eye className="w-3.5 h-3.5" />
           <span>{isPreview ? "Editor" : "Pratinjau"}</span>
         </button>
 
         <button
+          type="button"
           onClick={onExport}
-          className="h-8 px-3 rounded-md bg-sky-600 hover:bg-sky-500 active:scale-[0.98] text-white text-xs font-medium flex items-center gap-1.5 transition shadow-sm"
+          className="h-8 px-2.5 sm:px-3 rounded-lg bg-emerald-700 hover:bg-emerald-800 active:scale-[0.98] text-white text-xs font-semibold flex items-center justify-center transition shadow-2xs cursor-pointer"
         >
-          <Download className="w-3.5 h-3.5" />
           <span>Unduh ZIP</span>
         </button>
 
         <button
+          type="button"
           onClick={onToggleInspector}
-          className="h-8 w-8 rounded-md bg-slate-800/80 border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/5 active:scale-[0.98] transition"
-          title="Pengaturan"
+          className="h-8 px-2.5 sm:px-3 rounded-lg border border-slate-200/90 bg-white hover:bg-slate-50 text-slate-800 text-xs font-semibold flex items-center justify-center active:scale-[0.98] transition cursor-pointer shadow-2xs"
         >
-          <Settings2 className="w-4 h-4" />
+          <span>Pengaturan</span>
         </button>
       </div>
     </header>

@@ -21,7 +21,6 @@ export function generateHtmlCode(project: WeddingProject): string {
 </head>
 <body>
   <div class="invitation-container" id="app">
-    <!-- Screen 1: Cover Envelope -->
     <section class="screen-section active" id="screen-cover">
       <div class="envelope-card">
         <div class="wax-seal">
@@ -39,9 +38,7 @@ export function generateHtmlCode(project: WeddingProject): string {
       </div>
     </section>
 
-    <!-- Main Content Flow -->
     <main id="main-flow" class="flow-hidden">
-      <!-- Screen 2: Quote -->
       <section class="screen-section" id="screen-quote">
         <div class="card-content">
           <div class="ornament-top"></div>
@@ -51,7 +48,6 @@ export function generateHtmlCode(project: WeddingProject): string {
         </div>
       </section>
 
-      <!-- Screen 3: Mempelai Profile -->
       <section class="screen-section" id="screen-profile">
         <div class="card-content">
           <h2 class="section-title">Mempelai</h2>
@@ -75,7 +71,6 @@ export function generateHtmlCode(project: WeddingProject): string {
         </div>
       </section>
 
-      <!-- Screen 4: Countdown & Schedule -->
       <section class="screen-section" id="screen-schedule">
         <div class="card-content">
           <h2 class="section-title">Waktu & Tempat</h2>
@@ -106,7 +101,6 @@ export function generateHtmlCode(project: WeddingProject): string {
         </div>
       </section>
 
-      <!-- Screen 5: Digital Gift -->
       <section class="screen-section" id="screen-gift">
         <div class="card-content">
           <h2 class="section-title">Tanda Kasih</h2>
@@ -128,7 +122,6 @@ export function generateHtmlCode(project: WeddingProject): string {
         </div>
       </section>
 
-      <!-- Screen 6: RSVP & Wishes -->
       <section class="screen-section" id="screen-rsvp">
         <div class="card-content">
           <h2 class="section-title">Konfirmasi Hadir</h2>
@@ -156,7 +149,6 @@ export function generateHtmlCode(project: WeddingProject): string {
       </section>
     </main>
 
-    <!-- Floating Turntable Audio Player -->
     <div class="floating-turntable" id="audio-widget">
       <audio id="bg-audio" loop preload="none">
         <source src="${audioUrl}" type="audio/mp3">

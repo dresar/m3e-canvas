@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Sparkles, X, Loader2 } from "lucide-react";
 import { generateWeddingProject } from "../lib/ai";
 import { WeddingProject, ThemePalette } from "../types";
 import assetsDb from "../data/assets_database.json";
@@ -109,39 +108,36 @@ export const AIGenerateModal: React.FC<AIGenerateModalProps> = ({
 
       onClose();
     } catch (err: any) {
-      setErrorMsg(err?.message || "Gagal membuat undangan. Periksa koneksi atau API Key.");
+      setErrorMsg(err?.message || "Gagal membuat undangan.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="fixed inset-0 bg-black/70 backdrop-blur-xs z-50 flex items-center justify-center p-4">
-      <div className="w-full max-w-lg bg-slate-900 border border-white/10 rounded-xl shadow-2xl overflow-hidden flex flex-col">
-        <div className="h-12 px-4 border-b border-white/10 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Sparkles className="w-4 h-4 text-emerald-400" />
-            <span className="text-xs font-semibold text-white">AI Generator</span>
-          </div>
+    <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-xs z-50 flex items-center justify-center p-4 select-none">
+      <div className="w-full max-w-lg bg-white border border-slate-200 rounded-xl shadow-2xl overflow-hidden flex flex-col">
+        <div className="h-12 px-4 border-b border-slate-200 flex items-center justify-between bg-slate-50/80">
+          <span className="text-xs font-semibold text-slate-900">AI Generator</span>
           <button
             type="button"
             onClick={onClose}
-            className="h-8 w-8 rounded-md flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/5 active:scale-[0.98] transition"
+            className="h-7 px-2.5 rounded-md border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100 text-xs font-medium active:scale-[0.98] transition cursor-pointer"
           >
-            <X className="w-4 h-4" />
+            Tutup
           </button>
         </div>
 
         <div className="p-4 space-y-4">
           <div>
-            <label className="text-[11px] text-slate-400 block mb-1.5 font-medium">Contoh Konsep</label>
+            <label className="text-[11px] font-semibold text-slate-700 block mb-1.5">Contoh Konsep</label>
             <div className="grid grid-cols-2 gap-1.5">
               {PRESETS.map((p, i) => (
                 <button
                   key={i}
                   type="button"
                   onClick={() => setPrompt(p.prompt)}
-                  className="h-8 px-2.5 rounded-md bg-slate-800/80 hover:bg-slate-800 border border-white/5 hover:border-white/15 text-[11px] text-slate-300 hover:text-white text-left truncate transition active:scale-[0.98]"
+                  className="h-8 px-2.5 rounded-md bg-slate-50 hover:bg-slate-100 border border-slate-200 text-[11px] font-medium text-slate-700 hover:text-slate-900 text-left truncate transition active:scale-[0.98] cursor-pointer"
                 >
                   {p.title}
                 </button>
@@ -150,29 +146,29 @@ export const AIGenerateModal: React.FC<AIGenerateModalProps> = ({
           </div>
 
           <div>
-            <label className="text-[11px] text-slate-400 block mb-1.5 font-medium">Instruksi Desain</label>
+            <label className="text-[11px] font-semibold text-slate-700 block mb-1.5">Instruksi Desain</label>
             <textarea
               rows={4}
-              placeholder="Ide"
+              placeholder="Jelaskan detail pernikahan: nama mempelai, adat budaya, lokasi, dan suasana yang diinginkan..."
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
-              className="w-full p-3 rounded-md bg-slate-950/70 border border-white/10 text-white text-xs outline-none focus:border-emerald-500 resize-none"
+              className="w-full p-3 rounded-md bg-slate-50 border border-slate-200 text-slate-900 text-xs outline-none focus:bg-white focus:border-slate-400 focus:ring-1 focus:ring-slate-300 resize-none"
             />
           </div>
 
           {errorMsg && (
-            <div className="p-2.5 rounded-md bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs">
+            <div className="p-2.5 rounded-md bg-rose-50 border border-rose-200 text-rose-700 text-xs">
               {errorMsg}
             </div>
           )}
 
-          <div className="flex items-center justify-between pt-2 border-t border-white/5">
-            <span className="text-[10px] text-slate-500 font-mono">Model: HolverAI</span>
+          <div className="flex items-center justify-between pt-2 border-t border-slate-200">
+            <span className="text-[10px] text-slate-500 font-mono">Model: gemini-3.7-flash</span>
             <div className="flex items-center gap-2">
               <button
                 type="button"
                 onClick={onClose}
-                className="h-8 px-3 rounded-md border border-white/10 text-xs text-slate-300 hover:bg-white/5 active:scale-[0.98] transition"
+                className="h-8 px-3 rounded-md border border-slate-200 bg-white text-xs font-medium text-slate-700 hover:bg-slate-50 active:scale-[0.98] transition cursor-pointer"
               >
                 Batal
               </button>
@@ -180,19 +176,9 @@ export const AIGenerateModal: React.FC<AIGenerateModalProps> = ({
                 type="button"
                 disabled={loading || !prompt.trim()}
                 onClick={handleGenerate}
-                className="h-8 px-4 rounded-md bg-emerald-600 hover:bg-emerald-500 active:scale-[0.98] text-white text-xs font-semibold flex items-center gap-1.5 transition disabled:opacity-50 disabled:pointer-events-none"
+                className="h-8 px-4 rounded-md bg-slate-900 hover:bg-slate-800 active:scale-[0.98] text-white text-xs font-semibold flex items-center justify-center transition disabled:opacity-50 cursor-pointer shadow-2xs"
               >
-                {loading ? (
-                  <>
-                    <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                    <span>Membuat...</span>
-                  </>
-                ) : (
-                  <>
-                    <Sparkles className="w-3.5 h-3.5" />
-                    <span>Buat</span>
-                  </>
-                )}
+                <span>{loading ? "Memproses..." : "Buat Undangan"}</span>
               </button>
             </div>
           </div>

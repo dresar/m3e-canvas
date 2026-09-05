@@ -117,7 +117,7 @@ export default function App() {
   };
 
   return (
-    <div className="h-screen w-screen flex flex-col bg-slate-950 overflow-hidden font-sans select-none">
+    <div className="h-screen w-screen flex flex-col bg-slate-100/60 text-slate-900 overflow-hidden font-sans select-none">
       <Navbar
         zoom={zoom}
         setZoom={setZoom}
@@ -131,22 +131,32 @@ export default function App() {
         onToggleInspector={() => setIsInspectorOpen(!isInspectorOpen)}
       />
 
-      <div className="flex-1 flex overflow-hidden relative">
-        <CanvasViewport
-          project={project}
-          selectedScreenId={selectedScreenId}
-          onSelectScreen={setSelectedScreenId}
-          zoom={zoom}
-          isPreview={isPreview}
-        />
-
-        {!isPreview && (
-          <Inspector
+      <div className="flex-1 flex overflow-hidden relative p-1.5 sm:p-2 gap-2">
+        <div className="flex-1 flex overflow-hidden relative rounded-xl border border-slate-200/80 shadow-xs bg-white">
+          <CanvasViewport
             project={project}
-            onChangeProject={setProject}
-            isOpen={isInspectorOpen}
-            onClose={() => setIsInspectorOpen(false)}
+            selectedScreenId={selectedScreenId}
+            onSelectScreen={setSelectedScreenId}
+            zoom={zoom}
+            isPreview={isPreview}
           />
+        </div>
+
+        {isInspectorOpen && !isPreview && (
+          <div className="md:contents">
+            <div
+              onClick={() => setIsInspectorOpen(false)}
+              className="md:hidden fixed inset-0 bg-slate-900/25 backdrop-blur-xs z-30"
+            />
+            <div className="fixed md:relative right-0 top-13 md:top-0 bottom-0 z-40 rounded-xl overflow-hidden border border-slate-200/80 shadow-xs">
+              <Inspector
+                project={project}
+                onChangeProject={setProject}
+                isOpen={isInspectorOpen}
+                onClose={() => setIsInspectorOpen(false)}
+              />
+            </div>
+          </div>
         )}
       </div>
 

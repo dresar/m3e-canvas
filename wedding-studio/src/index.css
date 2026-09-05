@@ -2,14 +2,14 @@
 
 @layer base {
   * {
-    border-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(0, 0, 0, 0.08);
   }
 }
 
 .canvas-grid {
+  background-color: #f8fafc;
   background-size: 24px 24px;
-  background-image: 
-    radial-gradient(circle, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-image: radial-gradient(circle, #cbd5e1 1.2px, transparent 1.2px);
 }
 
 @keyframes vinylSpin {
@@ -39,10 +39,10 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
+  background: #cbd5e1;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: #94a3b8;
 }

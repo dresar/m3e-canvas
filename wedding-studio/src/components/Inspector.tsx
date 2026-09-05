@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { X, User, Calendar, Gift, Key, Sparkles, Sliders, Palette, Plus, Trash2, Music, Check } from "lucide-react";
 import { WeddingProject, ThemePalette } from "../types";
 import { getStoredApiKey, setStoredApiKey } from "../lib/ai";
 
@@ -17,57 +16,57 @@ const THEME_PRESETS: ThemePalette[] = [
     primary: "#8b1e1e",
     secondary: "#2a2a2a",
     accent: "#d4af37",
-    background: "#1a1615",
-    card: "#241e1c",
-    text: "#f5ece4",
+    background: "#fcf9f6",
+    card: "#ffffff",
+    text: "#221e1d",
     fontHeading: "Cinzel",
     fontBody: "Inter",
   },
   {
     id: "theme-sage",
     name: "Sage Elegance",
-    primary: "#556b2f",
+    primary: "#4a6b57",
     secondary: "#2e3b20",
     accent: "#8fa382",
-    background: "#141a12",
-    card: "#1e261a",
-    text: "#e8efe6",
+    background: "#f7f9f7",
+    card: "#ffffff",
+    text: "#24332a",
     fontHeading: "Playfair Display",
     fontBody: "Inter",
   },
   {
     id: "theme-gold",
     name: "Royal Gold",
-    primary: "#c5a059",
-    secondary: "#1f1d19",
-    accent: "#e5c07b",
-    background: "#121110",
-    card: "#1e1c18",
-    text: "#f7f3eb",
+    primary: "#b38728",
+    secondary: "#2d2415",
+    accent: "#d4af37",
+    background: "#faf8f2",
+    card: "#ffffff",
+    text: "#2d2415",
     fontHeading: "Cinzel",
     fontBody: "Inter",
   },
   {
     id: "theme-rustic",
     name: "Rustic Earth",
-    primary: "#a05a2c",
-    secondary: "#2c221c",
+    primary: "#a2583e",
+    secondary: "#3a1f15",
     accent: "#cf8a4e",
-    background: "#161311",
-    card: "#211b18",
-    text: "#f4ede8",
+    background: "#fdfaf7",
+    card: "#ffffff",
+    text: "#3a1f15",
     fontHeading: "Playfair Display",
     fontBody: "Inter",
   },
   {
     id: "theme-blush",
     name: "Rose Blush",
-    primary: "#c25975",
-    secondary: "#2a1c22",
-    accent: "#e58aa3",
-    background: "#171013",
-    card: "#23181d",
-    text: "#faeef2",
+    primary: "#b8697a",
+    secondary: "#381a21",
+    accent: "#d88a99",
+    background: "#fdf8f9",
+    card: "#ffffff",
+    text: "#381a21",
     fontHeading: "Playfair Display",
     fontBody: "Inter",
   },
@@ -119,7 +118,7 @@ export const Inspector: React.FC<InspectorProps> = ({
         akadTitle: "Pemberkatan Kudus",
         akadTime: "09:00 - 11:00 WIB",
         akadVenue: "Gereja HKBP Sudirman",
-        akadAddress: "Jl. Setiabudi No. 12, Jakarta Selatan",
+        akadAddress: "Jl. Setiabudi Barat No. 12, Jakarta Selatan",
         resepsiTitle: "Pesta Unjuk Adat Batak",
         resepsiTime: "12:00 - 17:00 WIB",
         resepsiVenue: "Gedung Mulia & Raja",
@@ -134,13 +133,13 @@ export const Inspector: React.FC<InspectorProps> = ({
             {
               id: "bank-1",
               bankName: "BCA",
-              accountNumber: "8735019283",
+              accountNumber: "8691234567",
               holderName: "Dicky Fernando Sitohang",
             },
             {
               id: "bank-2",
               bankName: "Mandiri",
-              accountNumber: "1320098412891",
+              accountNumber: "1230009876543",
               holderName: "Agnes Patricia Silalahi",
             },
           ],
@@ -201,206 +200,170 @@ export const Inspector: React.FC<InspectorProps> = ({
   const currentThemeId = typeof project.palette === "object" ? project.palette?.id : project.palette;
 
   return (
-    <aside className="w-80 border-l border-white/10 bg-slate-900/95 backdrop-blur-md flex flex-col h-[calc(100vh-56px)] shrink-0 z-40">
-      <div className="h-12 px-4 border-b border-white/10 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Sliders className="w-3.5 h-3.5 text-emerald-400" />
-          <span className="text-xs font-semibold text-white">Pengaturan Undangan</span>
-        </div>
+    <aside className="w-80 border-l border-slate-200/90 bg-white flex flex-col h-[calc(100vh-52px)] shrink-0 z-40 shadow-xs select-none">
+      <div className="h-12 px-3 sm:px-4 border-b border-slate-200/80 flex items-center justify-between bg-white">
+        <span className="text-xs font-semibold text-slate-900 tracking-tight">Pengaturan</span>
         <button
+          type="button"
           onClick={onClose}
-          className="h-8 w-8 rounded-md flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/5 active:scale-[0.98] transition"
+          className="h-7 px-2.5 rounded-md border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100 text-xs font-medium active:scale-[0.98] transition cursor-pointer"
         >
-          <X className="w-3.5 h-3.5" />
+          Tutup
         </button>
       </div>
 
-      <div className="p-3 border-b border-white/10 bg-slate-950/60">
+      <div className="p-3 border-b border-slate-200/80 bg-slate-50/70">
         <button
           type="button"
           onClick={handleLoadBatakPreset}
-          className="w-full h-9 px-3 rounded-lg bg-gradient-to-r from-red-950 via-amber-950/80 to-red-950 hover:from-red-900 hover:to-amber-900 border border-amber-500/40 text-amber-200 text-xs font-medium flex items-center justify-center gap-2 active:scale-[0.98] transition shadow-sm"
+          className="w-full h-8 px-3 rounded-md bg-slate-900 hover:bg-slate-800 text-amber-300 text-xs font-semibold flex items-center justify-center active:scale-[0.98] transition shadow-2xs cursor-pointer"
         >
-          <Sparkles className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
-          <span>Muat Template Adat Batak</span>
+          Template Batak Toba
         </button>
       </div>
 
-      <div className="grid grid-cols-6 p-1 bg-slate-950/40 border-b border-white/5 text-[11px]">
-        <button
-          onClick={() => setActiveTab("couple")}
-          className={`h-8 flex flex-col items-center justify-center rounded-md active:scale-[0.98] transition ${
-            activeTab === "couple" ? "bg-slate-800 text-white font-medium shadow-sm" : "text-slate-400 hover:text-slate-200"
-          }`}
-          title="Mempelai"
-        >
-          <User className="w-3.5 h-3.5" />
-        </button>
-        <button
-          onClick={() => setActiveTab("event")}
-          className={`h-8 flex flex-col items-center justify-center rounded-md active:scale-[0.98] transition ${
-            activeTab === "event" ? "bg-slate-800 text-white font-medium shadow-sm" : "text-slate-400 hover:text-slate-200"
-          }`}
-          title="Acara"
-        >
-          <Calendar className="w-3.5 h-3.5" />
-        </button>
-        <button
-          onClick={() => setActiveTab("theme")}
-          className={`h-8 flex flex-col items-center justify-center rounded-md active:scale-[0.98] transition ${
-            activeTab === "theme" ? "bg-slate-800 text-white font-medium shadow-sm" : "text-slate-400 hover:text-slate-200"
-          }`}
-          title="Tema"
-        >
-          <Palette className="w-3.5 h-3.5" />
-        </button>
-        <button
-          onClick={() => setActiveTab("gift")}
-          className={`h-8 flex flex-col items-center justify-center rounded-md active:scale-[0.98] transition ${
-            activeTab === "gift" ? "bg-slate-800 text-white font-medium shadow-sm" : "text-slate-400 hover:text-slate-200"
-          }`}
-          title="Hadiah"
-        >
-          <Gift className="w-3.5 h-3.5" />
-        </button>
-        <button
-          onClick={() => setActiveTab("quote")}
-          className={`h-8 flex flex-col items-center justify-center rounded-md active:scale-[0.98] transition ${
-            activeTab === "quote" ? "bg-slate-800 text-white font-medium shadow-sm" : "text-slate-400 hover:text-slate-200"
-          }`}
-          title="Kutipan"
-        >
-          <Sparkles className="w-3.5 h-3.5" />
-        </button>
-        <button
-          onClick={() => setActiveTab("api")}
-          className={`h-8 flex flex-col items-center justify-center rounded-md active:scale-[0.98] transition ${
-            activeTab === "api" ? "bg-slate-800 text-white font-medium shadow-sm" : "text-slate-400 hover:text-slate-200"
-          }`}
-          title="API Key"
-        >
-          <Key className="w-3.5 h-3.5" />
-        </button>
+      <div className="grid grid-cols-3 gap-1 p-1.5 bg-slate-100/90 border-b border-slate-200/80 text-[11px]">
+        {[
+          { key: "couple", label: "Mempelai" },
+          { key: "event", label: "Acara" },
+          { key: "theme", label: "Tema" },
+          { key: "gift", label: "Hadiah" },
+          { key: "quote", label: "Kutipan" },
+          { key: "api", label: "API" },
+        ].map((tab) => (
+          <button
+            key={tab.key}
+            type="button"
+            onClick={() => setActiveTab(tab.key as any)}
+            className={`h-7 rounded-md active:scale-[0.98] transition cursor-pointer text-xs flex items-center justify-center ${
+              activeTab === tab.key
+                ? "bg-slate-900 text-white font-semibold shadow-2xs"
+                : "text-slate-700 hover:text-slate-950 hover:bg-white/60 font-medium"
+            }`}
+          >
+            {tab.label}
+          </button>
+        ))}
       </div>
 
-      <div className="flex-1 overflow-y-auto p-4 space-y-4 text-xs">
+      <div className="flex-1 overflow-y-auto p-4 space-y-4 text-xs text-slate-800 bg-white">
         {activeTab === "couple" && (
           <div className="space-y-4">
             <div>
-              <label className="text-[11px] text-slate-400 block mb-1 font-medium">Nama Tamu Undangan</label>
+              <label className="text-[11px] font-semibold text-slate-700 block mb-1">Tamu Undangan</label>
               <input
                 type="text"
-                placeholder="Nama Tamu"
+                placeholder="Nama Tamu Undangan"
                 value={project.guestName || ""}
                 onChange={(e) => onChangeProject({ ...project, guestName: e.target.value })}
-                className="w-full h-8 px-2.5 rounded-md bg-slate-950/60 border border-white/10 text-white text-xs outline-none focus:border-emerald-500"
+                className="w-full h-8 px-2.5 rounded-md bg-slate-50 border border-slate-200 text-slate-900 text-xs outline-none focus:bg-white focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition"
               />
             </div>
 
-            <div className="pt-3 border-t border-white/5 space-y-2">
-              <span className="text-[11px] font-semibold text-emerald-400 block">Pengantin Pria</span>
+            <div className="pt-3 border-t border-slate-200/80 space-y-2">
+              <span className="text-[11px] font-semibold text-slate-900 block">Pengantin Pria</span>
               <div>
-                <label className="text-[10px] text-slate-400 block mb-0.5">Nama Lengkap</label>
+                <label className="text-[10px] text-slate-500 block mb-0.5 font-medium">Nama Lengkap</label>
                 <input
                   type="text"
-                  placeholder="Nama Lengkap Beserta Gelar"
+                  placeholder="Nama Lengkap Pria"
                   value={project.couple.groomName}
                   onChange={(e) => updateCouple("groomName", e.target.value)}
-                  className="w-full h-8 px-2.5 rounded-md bg-slate-950/60 border border-white/10 text-white text-xs outline-none focus:border-emerald-500"
+                  className="w-full h-8 px-2.5 rounded-md bg-slate-50 border border-slate-200 text-slate-900 text-xs outline-none focus:bg-white focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition"
                 />
               </div>
               <div>
-                <label className="text-[10px] text-slate-400 block mb-0.5">Nama Panggilan</label>
+                <label className="text-[10px] text-slate-500 block mb-0.5 font-medium">Nama Panggilan</label>
                 <input
                   type="text"
-                  placeholder="Nama Panggilan"
+                  placeholder="Panggilan"
                   value={project.couple.groomNick}
                   onChange={(e) => updateCouple("groomNick", e.target.value)}
-                  className="w-full h-8 px-2.5 rounded-md bg-slate-950/60 border border-white/10 text-white text-xs outline-none focus:border-emerald-500"
+                  className="w-full h-8 px-2.5 rounded-md bg-slate-50 border border-slate-200 text-slate-900 text-xs outline-none focus:bg-white focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition"
                 />
               </div>
               <div>
-                <label className="text-[10px] text-slate-400 block mb-0.5">Nama Orang Tua</label>
+                <label className="text-[10px] text-slate-500 block mb-0.5 font-medium">Orang Tua / Keluarga</label>
                 <input
                   type="text"
-                  placeholder="Putra dari Bpk... & Ibu..."
+                  placeholder="Keluarga / Orang Tua"
                   value={project.couple.groomParents}
                   onChange={(e) => updateCouple("groomParents", e.target.value)}
-                  className="w-full h-8 px-2.5 rounded-md bg-slate-950/60 border border-white/10 text-white text-xs outline-none focus:border-emerald-500"
+                  className="w-full h-8 px-2.5 rounded-md bg-slate-50 border border-slate-200 text-slate-900 text-xs outline-none focus:bg-white focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition"
                 />
               </div>
               <div>
-                <label className="text-[10px] text-slate-400 block mb-0.5">Instagram</label>
+                <label className="text-[10px] text-slate-500 block mb-0.5 font-medium">Akun Instagram</label>
                 <input
                   type="text"
-                  placeholder="@username"
+                  placeholder="@instagram"
                   value={project.couple.groomInstagram || ""}
                   onChange={(e) => updateCouple("groomInstagram", e.target.value)}
-                  className="w-full h-8 px-2.5 rounded-md bg-slate-950/60 border border-white/10 text-white text-xs outline-none focus:border-emerald-500"
+                  className="w-full h-8 px-2.5 rounded-md bg-slate-50 border border-slate-200 text-slate-900 text-xs outline-none focus:bg-white focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition"
                 />
               </div>
               <div>
-                <label className="text-[10px] text-slate-400 block mb-0.5">Tautan Foto Pria</label>
+                <label className="text-[10px] text-slate-500 block mb-0.5 font-medium">Foto Pria (URL)</label>
                 <input
                   type="text"
-                  placeholder="/assets/... atau URL gambar"
+                  placeholder="URL Foto"
                   value={project.couple.groomPhoto || ""}
                   onChange={(e) => updateCouple("groomPhoto", e.target.value)}
-                  className="w-full h-8 px-2.5 rounded-md bg-slate-950/60 border border-white/10 text-white text-xs outline-none focus:border-emerald-500 font-mono text-[11px]"
+                  className="w-full h-8 px-2.5 rounded-md bg-slate-50 border border-slate-200 text-slate-900 text-xs outline-none focus:bg-white focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition font-mono text-[11px]"
                 />
               </div>
             </div>
 
-            <div className="pt-3 border-t border-white/5 space-y-2">
-              <span className="text-[11px] font-semibold text-emerald-400 block">Pengantin Wanita</span>
+            <div className="pt-3 border-t border-slate-200/80 space-y-2">
+              <span className="text-[11px] font-semibold text-slate-900 block">Pengantin Wanita</span>
               <div>
-                <label className="text-[10px] text-slate-400 block mb-0.5">Nama Lengkap</label>
+                <label className="text-[10px] text-slate-500 block mb-0.5 font-medium">Nama Lengkap</label>
                 <input
                   type="text"
-                  placeholder="Nama Lengkap Beserta Gelar"
+                  placeholder="Nama Lengkap Wanita"
                   value={project.couple.brideName}
                   onChange={(e) => updateCouple("brideName", e.target.value)}
-                  className="w-full h-8 px-2.5 rounded-md bg-slate-950/60 border border-white/10 text-white text-xs outline-none focus:border-emerald-500"
+                  className="w-full h-8 px-2.5 rounded-md bg-slate-50 border border-slate-200 text-slate-900 text-xs outline-none focus:bg-white focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition"
                 />
               </div>
               <div>
-                <label className="text-[10px] text-slate-400 block mb-0.5">Nama Panggilan</label>
+                <label className="text-[10px] text-slate-500 block mb-0.5 font-medium">Nama Panggilan</label>
                 <input
                   type="text"
-                  placeholder="Nama Panggilan"
+                  placeholder="Panggilan"
                   value={project.couple.brideNick}
                   onChange={(e) => updateCouple("brideNick", e.target.value)}
-                  className="w-full h-8 px-2.5 rounded-md bg-slate-950/60 border border-white/10 text-white text-xs outline-none focus:border-emerald-500"
+                  className="w-full h-8 px-2.5 rounded-md bg-slate-50 border border-slate-200 text-slate-900 text-xs outline-none focus:bg-white focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition"
                 />
               </div>
               <div>
-                <label className="text-[10px] text-slate-400 block mb-0.5">Nama Orang Tua</label>
+                <label className="text-[10px] text-slate-500 block mb-0.5 font-medium">Orang Tua / Keluarga</label>
                 <input
                   type="text"
-                  placeholder="Putri dari Bpk... & Ibu..."
+                  placeholder="Keluarga / Orang Tua"
                   value={project.couple.brideParents}
                   onChange={(e) => updateCouple("brideParents", e.target.value)}
-                  className="w-full h-8 px-2.5 rounded-md bg-slate-950/60 border border-white/10 text-white text-xs outline-none focus:border-emerald-500"
+                  className="w-full h-8 px-2.5 rounded-md bg-slate-50 border border-slate-200 text-slate-900 text-xs outline-none focus:bg-white focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition"
                 />
               </div>
               <div>
-                <label className="text-[10px] text-slate-400 block mb-0.5">Instagram</label>
+                <label className="text-[10px] text-slate-500 block mb-0.5 font-medium">Akun Instagram</label>
                 <input
                   type="text"
-                  placeholder="@username"
+                  placeholder="@instagram"
                   value={project.couple.brideInstagram || ""}
                   onChange={(e) => updateCouple("brideInstagram", e.target.value)}
-                  className="w-full h-8 px-2.5 rounded-md bg-slate-950/60 border border-white/10 text-white text-xs outline-none focus:border-emerald-500"
+                  className="w-full h-8 px-2.5 rounded-md bg-slate-50 border border-slate-200 text-slate-900 text-xs outline-none focus:bg-white focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition"
                 />
               </div>
               <div>
-                <label className="text-[10px] text-slate-400 block mb-0.5">Tautan Foto Wanita</label>
+                <label className="text-[10px] text-slate-500 block mb-0.5 font-medium">Foto Wanita (URL)</label>
                 <input
                   type="text"
-                  placeholder="/assets/... atau URL gambar"
+                  placeholder="URL Foto"
                   value={project.couple.bridePhoto || ""}
                   onChange={(e) => updateCouple("bridePhoto", e.target.value)}
-                  className="w-full h-8 px-2.5 rounded-md bg-slate-950/60 border border-white/10 text-white text-xs outline-none focus:border-emerald-500 font-mono text-[11px]"
+                  className="w-full h-8 px-2.5 rounded-md bg-slate-50 border border-slate-200 text-slate-900 text-xs outline-none focus:bg-white focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition font-mono text-[11px]"
                 />
               </div>
             </div>
@@ -410,148 +373,121 @@ export const Inspector: React.FC<InspectorProps> = ({
         {activeTab === "event" && (
           <div className="space-y-4">
             <div>
-              <label className="text-[11px] text-slate-400 block mb-1 font-medium">Tanggal Acara Utama</label>
+              <label className="text-[11px] font-semibold text-slate-700 block mb-1">Tanggal Acara</label>
               <input
                 type="text"
-                placeholder="cth: Sabtu, 24 Oktober 2026"
+                placeholder="Contoh: Sabtu, 24 Oktober 2026"
                 value={project.event.date || ""}
                 onChange={(e) => updateEvent("date", e.target.value)}
-                className="w-full h-8 px-2.5 rounded-md bg-slate-950/60 border border-white/10 text-white text-xs outline-none focus:border-emerald-500"
+                className="w-full h-8 px-2.5 rounded-md bg-slate-50 border border-slate-200 text-slate-900 text-xs outline-none focus:bg-white focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition"
               />
             </div>
 
             <div>
-              <label className="text-[11px] text-slate-400 block mb-1 font-medium">Target Waktu Countdown (ISO)</label>
+              <label className="text-[11px] font-semibold text-slate-700 block mb-1">Target Countdown (ISO)</label>
               <input
                 type="text"
-                placeholder="2026-10-24T09:00:00"
+                placeholder="YYYY-MM-DDTHH:mm:ss"
                 value={project.event.targetTimestamp}
                 onChange={(e) => updateEvent("targetTimestamp", e.target.value)}
-                className="w-full h-8 px-2.5 rounded-md bg-slate-950/60 border border-white/10 text-white text-xs outline-none focus:border-emerald-500 font-mono"
+                className="w-full h-8 px-2.5 rounded-md bg-slate-50 border border-slate-200 text-slate-900 text-xs outline-none focus:bg-white focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition font-mono"
               />
             </div>
 
-            <div className="pt-3 border-t border-white/5 space-y-2">
-              <span className="text-[11px] font-semibold text-emerald-400 block">Akad / Pemberkatan</span>
+            <div className="pt-3 border-t border-slate-200/80 space-y-2">
+              <span className="text-[11px] font-semibold text-slate-900 block">Akad / Pemberkatan</span>
               <div>
-                <label className="text-[10px] text-slate-400 block mb-0.5">Nama Acara</label>
+                <label className="text-[10px] text-slate-500 block mb-0.5 font-medium">Nama Acara</label>
                 <input
                   type="text"
-                  placeholder="Akad Nikah / Pemberkatan Kudus"
+                  placeholder="Pemberkatan Kudus"
                   value={project.event.akadTitle || "Akad Nikah"}
                   onChange={(e) => updateEvent("akadTitle", e.target.value)}
-                  className="w-full h-8 px-2.5 rounded-md bg-slate-950/60 border border-white/10 text-white text-xs outline-none focus:border-emerald-500"
+                  className="w-full h-8 px-2.5 rounded-md bg-slate-50 border border-slate-200 text-slate-900 text-xs outline-none focus:bg-white focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition"
                 />
               </div>
               <div>
-                <label className="text-[10px] text-slate-400 block mb-0.5">Waktu</label>
+                <label className="text-[10px] text-slate-500 block mb-0.5 font-medium">Waktu Acara</label>
                 <input
                   type="text"
                   placeholder="09:00 - 11:00 WIB"
                   value={project.event.akadTime}
                   onChange={(e) => updateEvent("akadTime", e.target.value)}
-                  className="w-full h-8 px-2.5 rounded-md bg-slate-950/60 border border-white/10 text-white text-xs outline-none focus:border-emerald-500"
+                  className="w-full h-8 px-2.5 rounded-md bg-slate-50 border border-slate-200 text-slate-900 text-xs outline-none focus:bg-white focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition"
                 />
               </div>
               <div>
-                <label className="text-[10px] text-slate-400 block mb-0.5">Tempat / Gedung</label>
+                <label className="text-[10px] text-slate-500 block mb-0.5 font-medium">Nama Tempat</label>
                 <input
                   type="text"
-                  placeholder="Nama Tempat atau Gereja"
+                  placeholder="Gereja HKBP Sudirman"
                   value={project.event.akadVenue}
                   onChange={(e) => updateEvent("akadVenue", e.target.value)}
-                  className="w-full h-8 px-2.5 rounded-md bg-slate-950/60 border border-white/10 text-white text-xs outline-none focus:border-emerald-500"
+                  className="w-full h-8 px-2.5 rounded-md bg-slate-50 border border-slate-200 text-slate-900 text-xs outline-none focus:bg-white focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition"
                 />
               </div>
               <div>
-                <label className="text-[10px] text-slate-400 block mb-0.5">Alamat Lengkap</label>
+                <label className="text-[10px] text-slate-500 block mb-0.5 font-medium">Alamat</label>
                 <input
                   type="text"
-                  placeholder="Alamat Lokasi Akad"
+                  placeholder="Alamat Lokasi"
                   value={project.event.akadAddress}
                   onChange={(e) => updateEvent("akadAddress", e.target.value)}
-                  className="w-full h-8 px-2.5 rounded-md bg-slate-950/60 border border-white/10 text-white text-xs outline-none focus:border-emerald-500"
+                  className="w-full h-8 px-2.5 rounded-md bg-slate-50 border border-slate-200 text-slate-900 text-xs outline-none focus:bg-white focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition"
                 />
               </div>
             </div>
 
-            <div className="pt-3 border-t border-white/5 space-y-2">
-              <span className="text-[11px] font-semibold text-emerald-400 block">Resepsi / Pesta Adat</span>
+            <div className="pt-3 border-t border-slate-200/80 space-y-2">
+              <span className="text-[11px] font-semibold text-slate-900 block">Pesta Adat / Resepsi</span>
               <div>
-                <label className="text-[10px] text-slate-400 block mb-0.5">Nama Acara</label>
+                <label className="text-[10px] text-slate-500 block mb-0.5 font-medium">Nama Resepsi</label>
                 <input
                   type="text"
-                  placeholder="Resepsi / Pesta Unjuk Adat"
-                  value={project.event.resepsiTitle || "Resepsi Pernikahan"}
+                  placeholder="Pesta Unjuk Adat Batak"
+                  value={project.event.resepsiTitle}
                   onChange={(e) => updateEvent("resepsiTitle", e.target.value)}
-                  className="w-full h-8 px-2.5 rounded-md bg-slate-950/60 border border-white/10 text-white text-xs outline-none focus:border-emerald-500"
+                  className="w-full h-8 px-2.5 rounded-md bg-slate-50 border border-slate-200 text-slate-900 text-xs outline-none focus:bg-white focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition"
                 />
               </div>
               <div>
-                <label className="text-[10px] text-slate-400 block mb-0.5">Waktu</label>
+                <label className="text-[10px] text-slate-500 block mb-0.5 font-medium">Waktu Resepsi</label>
                 <input
                   type="text"
                   placeholder="12:00 - 17:00 WIB"
                   value={project.event.resepsiTime}
                   onChange={(e) => updateEvent("resepsiTime", e.target.value)}
-                  className="w-full h-8 px-2.5 rounded-md bg-slate-950/60 border border-white/10 text-white text-xs outline-none focus:border-emerald-500"
+                  className="w-full h-8 px-2.5 rounded-md bg-slate-50 border border-slate-200 text-slate-900 text-xs outline-none focus:bg-white focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition"
                 />
               </div>
               <div>
-                <label className="text-[10px] text-slate-400 block mb-0.5">Tempat / Gedung</label>
+                <label className="text-[10px] text-slate-500 block mb-0.5 font-medium">Nama Gedung</label>
                 <input
                   type="text"
-                  placeholder="Nama Ballroom atau Gedung"
+                  placeholder="Gedung Mulia & Raja"
                   value={project.event.resepsiVenue}
                   onChange={(e) => updateEvent("resepsiVenue", e.target.value)}
-                  className="w-full h-8 px-2.5 rounded-md bg-slate-950/60 border border-white/10 text-white text-xs outline-none focus:border-emerald-500"
+                  className="w-full h-8 px-2.5 rounded-md bg-slate-50 border border-slate-200 text-slate-900 text-xs outline-none focus:bg-white focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition"
                 />
               </div>
               <div>
-                <label className="text-[10px] text-slate-400 block mb-0.5">Alamat Lengkap</label>
+                <label className="text-[10px] text-slate-500 block mb-0.5 font-medium">Alamat Lengkap</label>
                 <input
                   type="text"
-                  placeholder="Alamat Lokasi Resepsi"
+                  placeholder="Alamat Gedung"
                   value={project.event.resepsiAddress}
                   onChange={(e) => updateEvent("resepsiAddress", e.target.value)}
-                  className="w-full h-8 px-2.5 rounded-md bg-slate-950/60 border border-white/10 text-white text-xs outline-none focus:border-emerald-500"
-                />
-              </div>
-            </div>
-
-            <div className="pt-3 border-t border-white/5 space-y-2">
-              <label className="text-[11px] text-slate-400 block font-medium">Tautan Google Maps</label>
-              <input
-                type="text"
-                placeholder="https://maps.google.com/..."
-                value={project.event.mapsUrl}
-                onChange={(e) => updateEvent("mapsUrl", e.target.value)}
-                className="w-full h-8 px-2.5 rounded-md bg-slate-950/60 border border-white/10 text-white text-xs outline-none focus:border-emerald-500 font-mono text-[11px]"
-              />
-            </div>
-
-            <div className="pt-3 border-t border-white/5 space-y-2">
-              <span className="text-[11px] font-semibold text-emerald-400 flex items-center gap-1.5">
-                <Music className="w-3.5 h-3.5" /> Musik Latar
-              </span>
-              <div>
-                <label className="text-[10px] text-slate-400 block mb-0.5">Judul Lagu</label>
-                <input
-                  type="text"
-                  placeholder="Judul Lagu - Artis"
-                  value={project.audioTitle || ""}
-                  onChange={(e) => onChangeProject({ ...project, audioTitle: e.target.value })}
-                  className="w-full h-8 px-2.5 rounded-md bg-slate-950/60 border border-white/10 text-white text-xs outline-none focus:border-emerald-500"
+                  className="w-full h-8 px-2.5 rounded-md bg-slate-50 border border-slate-200 text-slate-900 text-xs outline-none focus:bg-white focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition"
                 />
               </div>
               <div>
-                <label className="text-[10px] text-slate-400 block mb-0.5">URL File Audio (MP3)</label>
+                <label className="text-[10px] text-slate-500 block mb-0.5 font-medium">URL Google Maps</label>
                 <input
                   type="text"
-                  placeholder="/assets/... atau URL audio"
-                  value={project.audioUrl || ""}
-                  onChange={(e) => onChangeProject({ ...project, audioUrl: e.target.value })}
-                  className="w-full h-8 px-2.5 rounded-md bg-slate-950/60 border border-white/10 text-white text-xs outline-none focus:border-emerald-500 font-mono text-[11px]"
+                  placeholder="https://maps.google.com"
+                  value={project.event.mapsUrl}
+                  onChange={(e) => updateEvent("mapsUrl", e.target.value)}
+                  className="w-full h-8 px-2.5 rounded-md bg-slate-50 border border-slate-200 text-slate-900 text-xs outline-none focus:bg-white focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition font-mono text-[11px]"
                 />
               </div>
             </div>
@@ -561,135 +497,70 @@ export const Inspector: React.FC<InspectorProps> = ({
         {activeTab === "theme" && (
           <div className="space-y-4">
             <div>
-              <label className="text-[11px] text-slate-400 block mb-2 font-medium">Pilihan Tema Desain</label>
-              <div className="space-y-2">
-                {THEME_PRESETS.map((preset) => {
-                  const isSelected = currentThemeId === preset.id;
-                  return (
-                    <button
-                      key={preset.id}
-                      type="button"
-                      onClick={() => selectTheme(preset)}
-                      className={`w-full p-2.5 rounded-lg border flex items-center justify-between text-left active:scale-[0.98] transition ${
-                        isSelected
-                          ? "border-emerald-500 bg-emerald-950/20 shadow-sm"
-                          : "border-white/10 bg-slate-950/40 hover:border-white/20"
-                      }`}
-                    >
-                      <div className="flex items-center gap-2.5">
-                        <div className="flex items-center -space-x-1.5">
-                          <span
-                            className="w-4 h-4 rounded-full border border-black/40 inline-block shadow-sm"
-                            style={{ backgroundColor: preset.primary }}
-                          />
-                          <span
-                            className="w-4 h-4 rounded-full border border-black/40 inline-block shadow-sm"
-                            style={{ backgroundColor: preset.accent }}
-                          />
-                          <span
-                            className="w-4 h-4 rounded-full border border-black/40 inline-block shadow-sm"
-                            style={{ backgroundColor: preset.background }}
-                          />
-                        </div>
-                        <div>
-                          <span className="text-xs font-medium text-white block">{preset.name}</span>
-                          <span className="text-[10px] text-slate-400 font-serif">{preset.fontHeading}</span>
-                        </div>
+              <label className="text-[11px] font-semibold text-slate-700 block mb-1.5">Preset Tema</label>
+              <div className="space-y-1.5">
+                {THEME_PRESETS.map((p) => (
+                  <button
+                    key={p.id}
+                    type="button"
+                    onClick={() => selectTheme(p)}
+                    className={`w-full p-2.5 rounded-md border text-left flex items-center justify-between transition cursor-pointer active:scale-[0.98] ${
+                      currentThemeId === p.id
+                        ? "border-slate-900 bg-slate-50 ring-1 ring-slate-900 font-semibold"
+                        : "border-slate-200 hover:border-slate-300 bg-white"
+                    }`}
+                  >
+                    <div className="flex items-center gap-2">
+                      <div className="flex gap-1">
+                        <div className="w-3.5 h-3.5 rounded-full border border-black/10" style={{ backgroundColor: p.primary }} />
+                        <div className="w-3.5 h-3.5 rounded-full border border-black/10" style={{ backgroundColor: p.accent }} />
                       </div>
-                      {isSelected && <Check className="w-4 h-4 text-emerald-400 shrink-0" />}
-                    </button>
-                  );
-                })}
+                      <span className="text-xs text-slate-800">{p.name}</span>
+                    </div>
+                    {currentThemeId === p.id && (
+                      <span className="text-[10px] font-bold text-slate-900">Aktif</span>
+                    )}
+                  </button>
+                ))}
               </div>
             </div>
 
             {typeof project.palette === "object" && project.palette !== null && (
-              <div className="pt-3 border-t border-white/5 space-y-2.5">
-                <span className="text-[11px] font-semibold text-emerald-400 block">Kustomisasi Warna Tema</span>
-                <div className="grid grid-cols-2 gap-2">
-                  <div>
-                    <label className="text-[10px] text-slate-400 block mb-0.5">Warna Utama</label>
-                    <div className="flex items-center gap-1.5">
-                      <input
-                        type="color"
-                        value={project.palette.primary || "#8b1e1e"}
-                        onChange={(e) => updateThemeField("primary", e.target.value)}
-                        className="w-6 h-6 rounded cursor-pointer bg-transparent border-0"
-                      />
-                      <input
-                        type="text"
-                        value={project.palette.primary || ""}
-                        onChange={(e) => updateThemeField("primary", e.target.value)}
-                        className="w-full h-8 px-2 rounded-md bg-slate-950/60 border border-white/10 text-white font-mono text-[11px] outline-none"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="text-[10px] text-slate-400 block mb-0.5">Warna Aksen</label>
-                    <div className="flex items-center gap-1.5">
-                      <input
-                        type="color"
-                        value={project.palette.accent || "#d4af37"}
-                        onChange={(e) => updateThemeField("accent", e.target.value)}
-                        className="w-6 h-6 rounded cursor-pointer bg-transparent border-0"
-                      />
-                      <input
-                        type="text"
-                        value={project.palette.accent || ""}
-                        onChange={(e) => updateThemeField("accent", e.target.value)}
-                        className="w-full h-8 px-2 rounded-md bg-slate-950/60 border border-white/10 text-white font-mono text-[11px] outline-none"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="text-[10px] text-slate-400 block mb-0.5">Latar Belakang</label>
-                    <div className="flex items-center gap-1.5">
-                      <input
-                        type="color"
-                        value={project.palette.background || "#1a1615"}
-                        onChange={(e) => updateThemeField("background", e.target.value)}
-                        className="w-6 h-6 rounded cursor-pointer bg-transparent border-0"
-                      />
-                      <input
-                        type="text"
-                        value={project.palette.background || ""}
-                        onChange={(e) => updateThemeField("background", e.target.value)}
-                        className="w-full h-8 px-2 rounded-md bg-slate-950/60 border border-white/10 text-white font-mono text-[11px] outline-none"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="text-[10px] text-slate-400 block mb-0.5">Warna Kartu</label>
-                    <div className="flex items-center gap-1.5">
-                      <input
-                        type="color"
-                        value={project.palette.card || "#241e1c"}
-                        onChange={(e) => updateThemeField("card", e.target.value)}
-                        className="w-6 h-6 rounded cursor-pointer bg-transparent border-0"
-                      />
-                      <input
-                        type="text"
-                        value={project.palette.card || ""}
-                        onChange={(e) => updateThemeField("card", e.target.value)}
-                        className="w-full h-8 px-2 rounded-md bg-slate-950/60 border border-white/10 text-white font-mono text-[11px] outline-none"
-                      />
-                    </div>
+              <div className="pt-3 border-t border-slate-200/80 space-y-2">
+                <span className="text-[11px] font-semibold text-slate-900 block">Kustom Warna</span>
+                <div>
+                  <label className="text-[10px] text-slate-500 block mb-0.5 font-medium">Warna Utama</label>
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="color"
+                      value={project.palette.primary}
+                      onChange={(e) => updateThemeField("primary", e.target.value)}
+                      className="w-8 h-8 rounded border border-slate-200 cursor-pointer p-0.5"
+                    />
+                    <input
+                      type="text"
+                      value={project.palette.primary}
+                      onChange={(e) => updateThemeField("primary", e.target.value)}
+                      className="flex-1 h-8 px-2 rounded-md bg-slate-50 border border-slate-200 text-xs font-mono"
+                    />
                   </div>
                 </div>
-
-                <div className="pt-2">
-                  <label className="text-[10px] text-slate-400 block mb-0.5">Font Judul</label>
-                  <select
-                    value={project.palette.fontHeading || "Cinzel"}
-                    onChange={(e) => updateThemeField("fontHeading", e.target.value)}
-                    className="w-full h-8 px-2 rounded-md bg-slate-950/60 border border-white/10 text-white text-xs outline-none"
-                  >
-                    <option value="Cinzel">Cinzel</option>
-                    <option value="Playfair Display">Playfair Display</option>
-                    <option value="Cormorant Garamond">Cormorant Garamond</option>
-                    <option value="Great Vibes">Great Vibes</option>
-                    <option value="Montserrat">Montserrat</option>
-                  </select>
+                <div>
+                  <label className="text-[10px] text-slate-500 block mb-0.5 font-medium">Warna Aksen</label>
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="color"
+                      value={project.palette.accent}
+                      onChange={(e) => updateThemeField("accent", e.target.value)}
+                      className="w-8 h-8 rounded border border-slate-200 cursor-pointer p-0.5"
+                    />
+                    <input
+                      type="text"
+                      value={project.palette.accent}
+                      onChange={(e) => updateThemeField("accent", e.target.value)}
+                      className="flex-1 h-8 px-2 rounded-md bg-slate-50 border border-slate-200 text-xs font-mono"
+                    />
+                  </div>
                 </div>
               </div>
             )}
@@ -699,121 +570,146 @@ export const Inspector: React.FC<InspectorProps> = ({
         {activeTab === "gift" && (
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <span className="text-[11px] font-semibold text-emerald-400">Daftar Rekening & Amplop</span>
+              <span className="text-[11px] font-semibold text-slate-900">Daftar Rekening</span>
               <button
                 type="button"
                 onClick={handleAddBank}
-                className="h-7 px-2 rounded-md bg-emerald-600/20 border border-emerald-500/30 hover:bg-emerald-600/30 text-emerald-300 text-[11px] flex items-center gap-1 active:scale-[0.98] transition"
+                className="h-7 px-2.5 rounded-md bg-slate-900 text-white text-xs font-medium active:scale-[0.98] transition cursor-pointer"
               >
-                <Plus className="w-3 h-3" />
-                <span>Tambah</span>
+                Tambah
               </button>
             </div>
 
-            {(project.banks || []).map((bank, index) => (
-              <div key={bank.id || index} className="p-3 rounded-lg bg-slate-950/40 border border-white/10 space-y-2">
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-semibold text-slate-300">Rekening {index + 1}</span>
-                  <button
-                    type="button"
-                    onClick={() => handleRemoveBank(index)}
-                    className="h-6 w-6 rounded-md flex items-center justify-center text-slate-500 hover:text-red-400 hover:bg-red-500/10 active:scale-[0.98] transition"
-                  >
-                    <Trash2 className="w-3 h-3" />
-                  </button>
+            <div className="space-y-3">
+              {(project.banks || []).map((b, idx) => (
+                <div key={b.id || idx} className="p-3 rounded-md border border-slate-200 bg-slate-50/60 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] font-bold text-slate-700">Bank #{idx + 1}</span>
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveBank(idx)}
+                      className="h-6 px-2 rounded border border-rose-200 text-rose-600 hover:bg-rose-50 text-[10px] font-medium active:scale-[0.98] transition cursor-pointer"
+                    >
+                      Hapus
+                    </button>
+                  </div>
+                  <div>
+                    <label className="text-[10px] text-slate-500 block mb-0.5 font-medium">Nama Bank</label>
+                    <input
+                      type="text"
+                      placeholder="BCA / Mandiri / BNI"
+                      value={b.bankName}
+                      onChange={(e) => {
+                        const updated = [...(project.banks || [])];
+                        updated[idx] = { ...updated[idx], bankName: e.target.value };
+                        onChangeProject({ ...project, banks: updated });
+                      }}
+                      className="w-full h-8 px-2 rounded-md bg-white border border-slate-200 text-xs"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-[10px] text-slate-500 block mb-0.5 font-medium">Nomor Rekening</label>
+                    <input
+                      type="text"
+                      placeholder="1234567890"
+                      value={b.accountNumber}
+                      onChange={(e) => {
+                        const updated = [...(project.banks || [])];
+                        updated[idx] = { ...updated[idx], accountNumber: e.target.value };
+                        onChangeProject({ ...project, banks: updated });
+                      }}
+                      className="w-full h-8 px-2 rounded-md bg-white border border-slate-200 text-xs font-mono"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-[10px] text-slate-500 block mb-0.5 font-medium">Nama Pemilik</label>
+                    <input
+                      type="text"
+                      placeholder="Nama Sesuai Rekening"
+                      value={b.holderName}
+                      onChange={(e) => {
+                        const updated = [...(project.banks || [])];
+                        updated[idx] = { ...updated[idx], holderName: e.target.value };
+                        onChangeProject({ ...project, banks: updated });
+                      }}
+                      className="w-full h-8 px-2 rounded-md bg-white border border-slate-200 text-xs"
+                    />
+                  </div>
                 </div>
-                <div>
-                  <label className="text-[10px] text-slate-400 block mb-0.5">Nama Bank / e-Wallet</label>
-                  <input
-                    type="text"
-                    placeholder="BCA, Mandiri, Gopay, QRIS"
-                    value={bank.bankName}
-                    onChange={(e) => {
-                      const newBanks = [...(project.banks || [])];
-                      newBanks[index] = { ...bank, bankName: e.target.value };
-                      onChangeProject({ ...project, banks: newBanks });
-                    }}
-                    className="w-full h-8 px-2.5 rounded-md bg-slate-950/60 border border-white/10 text-white text-xs outline-none"
-                  />
-                </div>
-                <div>
-                  <label className="text-[10px] text-slate-400 block mb-0.5">Nomor Rekening</label>
-                  <input
-                    type="text"
-                    placeholder="Nomor Rekening / Nomor Ponsel"
-                    value={bank.accountNumber}
-                    onChange={(e) => {
-                      const newBanks = [...(project.banks || [])];
-                      newBanks[index] = { ...bank, accountNumber: e.target.value };
-                      onChangeProject({ ...project, banks: newBanks });
-                    }}
-                    className="w-full h-8 px-2.5 rounded-md bg-slate-950/60 border border-white/10 text-white text-xs outline-none font-mono"
-                  />
-                </div>
-                <div>
-                  <label className="text-[10px] text-slate-400 block mb-0.5">Atas Nama Pemilik</label>
-                  <input
-                    type="text"
-                    placeholder="Nama Pemilik Rekening"
-                    value={bank.holderName}
-                    onChange={(e) => {
-                      const newBanks = [...(project.banks || [])];
-                      newBanks[index] = { ...bank, holderName: e.target.value };
-                      onChangeProject({ ...project, banks: newBanks });
-                    }}
-                    className="w-full h-8 px-2.5 rounded-md bg-slate-950/60 border border-white/10 text-white text-xs outline-none"
-                  />
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         )}
 
         {activeTab === "quote" && (
-          <div className="space-y-3">
+          <div className="space-y-4">
             <div>
-              <label className="text-[11px] text-slate-400 block mb-1 font-medium">Isi Ayat / Kutipan Cinta</label>
+              <label className="text-[11px] font-semibold text-slate-700 block mb-1">Teks Kutipan</label>
               <textarea
-                placeholder="Tuliskan ayat suci atau kutipan romantis..."
-                rows={5}
+                rows={3}
+                placeholder="Teks Kutipan / Ayat"
                 value={project.quote}
                 onChange={(e) => onChangeProject({ ...project, quote: e.target.value })}
-                className="w-full p-2.5 rounded-md bg-slate-950/60 border border-white/10 text-white text-xs outline-none focus:border-emerald-500 resize-none leading-relaxed"
+                className="w-full p-2.5 rounded-md bg-slate-50 border border-slate-200 text-slate-900 text-xs outline-none focus:bg-white focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition resize-none"
               />
             </div>
             <div>
-              <label className="text-[11px] text-slate-400 block mb-1 font-medium">Sumber / Rujukan</label>
+              <label className="text-[11px] font-semibold text-slate-700 block mb-1">Sumber Kutipan</label>
               <input
                 type="text"
-                placeholder="cth: Kolose 3:14 / Ar-Rum 21"
+                placeholder="Kolose 3:14"
                 value={project.quoteSource}
                 onChange={(e) => onChangeProject({ ...project, quoteSource: e.target.value })}
-                className="w-full h-8 px-2.5 rounded-md bg-slate-950/60 border border-white/10 text-white text-xs outline-none focus:border-emerald-500"
+                className="w-full h-8 px-2.5 rounded-md bg-slate-50 border border-slate-200 text-slate-900 text-xs outline-none focus:bg-white focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition"
               />
+            </div>
+            <div className="pt-3 border-t border-slate-200/80 space-y-2">
+              <span className="text-[11px] font-semibold text-slate-900 block">Musik Latar</span>
+              <div>
+                <label className="text-[10px] text-slate-500 block mb-0.5 font-medium">Judul Musik</label>
+                <input
+                  type="text"
+                  placeholder="Viky Sianipar - Tobadream"
+                  value={project.audioTitle || ""}
+                  onChange={(e) => onChangeProject({ ...project, audioTitle: e.target.value })}
+                  className="w-full h-8 px-2.5 rounded-md bg-slate-50 border border-slate-200 text-slate-900 text-xs outline-none focus:bg-white focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition"
+                />
+              </div>
+              <div>
+                <label className="text-[10px] text-slate-500 block mb-0.5 font-medium">URL File Audio (MP3)</label>
+                <input
+                  type="text"
+                  placeholder="URL Audio"
+                  value={project.audioUrl || ""}
+                  onChange={(e) => onChangeProject({ ...project, audioUrl: e.target.value })}
+                  className="w-full h-8 px-2.5 rounded-md bg-slate-50 border border-slate-200 text-slate-900 text-xs outline-none focus:bg-white focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition font-mono text-[11px]"
+                />
+              </div>
             </div>
           </div>
         )}
 
         {activeTab === "api" && (
-          <div className="space-y-3">
+          <div className="space-y-4">
             <div>
-              <label className="text-[11px] text-slate-400 block mb-1 font-medium">Holver Gemini API Key</label>
+              <label className="text-[11px] font-semibold text-slate-700 block mb-1">API Key AI Gateway</label>
               <input
                 type="password"
-                placeholder="Ketik API Key Anda..."
+                placeholder="sk-..."
                 value={apiKeyInput}
                 onChange={(e) => setApiKeyInput(e.target.value)}
-                className="w-full h-8 px-2.5 rounded-md bg-slate-950/60 border border-white/10 text-white text-xs outline-none focus:border-emerald-500 font-mono"
+                className="w-full h-8 px-2.5 rounded-md bg-slate-50 border border-slate-200 text-slate-900 text-xs outline-none focus:bg-white focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition font-mono"
               />
+              <p className="text-[10px] text-slate-500 mt-1 leading-normal">
+                Disimpan di localStorage browser Anda untuk memanggil AI Generator.
+              </p>
             </div>
-            <p className="text-[10px] text-slate-400 leading-relaxed">
-              Model aktif: <span className="font-mono text-emerald-400">HolverAI</span> via Holver AI. Kunci disimpan secara privat pada penyimpanan lokal browser Anda.
-            </p>
             <button
+              type="button"
               onClick={handleSaveApiKey}
-              className="w-full h-9 rounded-md bg-emerald-600 hover:bg-emerald-500 active:scale-[0.98] text-white text-xs font-medium transition shadow-sm"
+              className="h-8 px-4 rounded-md bg-slate-900 hover:bg-slate-800 active:scale-[0.98] text-white text-xs font-medium transition cursor-pointer"
             >
-              {savedStatus ? "Kunci API Tersimpan!" : "Simpan API Key"}
+              {savedStatus ? "Tersimpan!" : "Simpan Key"}
             </button>
           </div>
         )}
